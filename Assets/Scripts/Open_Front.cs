@@ -1,23 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Open_Top_Box : MonoBehaviour
+public class Open_Front : MonoBehaviour
 {
-    private float xAngle = 130;
+    private float xAngle = 90;
     private float speed = 50;
 
-    private bool open = false;
+    public bool open = false;
 
     private float totalRot = 0;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Log(transform.rotation.eulerAngles.x);
+    }
+
+    // Update is called once per frame
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             open = !open;
         }
+
         if (open)
         {
             if (totalRot <= xAngle)
