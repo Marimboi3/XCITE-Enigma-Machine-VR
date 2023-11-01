@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Open_Top_Box : MonoBehaviour
+public class Open_Front : MonoBehaviour
 {
-    private float xAngle = 130;
+    private float xAngle = 90;
     private float speed = 50;
 
     public bool open = false;
 
     private float totalRot = 0;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        Debug.Log("quarteron: " + gameObject.transform.rotation);
-        Quaternion rotation = new Quaternion(0, 0, 180, 0);
-        this.gameObject.transform.rotation = rotation;
+        Debug.Log(transform.rotation.eulerAngles.x);
     }
+
+    // Update is called once per frame
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
