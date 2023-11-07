@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plug: {fileID: 919132149155446097, guid: 2586d7909ed2e3f4f88fddd8ab72e05a, type: 3}
-  mechanism: {fileID: 1046840510}
+  mechanism: {fileID: 1046840508}
 --- !u!4 &1348251475
 Transform:
   m_ObjectHideFlags: 0
