@@ -14,7 +14,7 @@ public class Testing : MonoBehaviour
         int letterNum;
 
         //this types hello
-        List<int> inputs = new List<int> { 72, 69, 76, 76, 79 };
+        List<int> inputs = new List<int> {65, 65, 90, 90};
 
         for (int i = 0; i < inputs.Count; i++)
         {

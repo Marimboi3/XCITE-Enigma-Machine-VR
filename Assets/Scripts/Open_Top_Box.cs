@@ -11,14 +11,11 @@ public class Open_Top_Box : MonoBehaviour
     private bool open = false;
 
     private float totalRot = 0;
-/*
+
     private void Start()
     {
-
-        int num = 65 + 25;
-        Debug.Log("charcter should be A: " + (char)num);
-        Debug.Log("charcter should be Z: " + (char)num);
-    }*/
+        transform.Rotate(0, 180, 0, Space.World);
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

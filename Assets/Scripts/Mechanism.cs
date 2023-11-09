@@ -10,6 +10,8 @@ using System.Globalization;
 
 public class Mechanism : MonoBehaviour
 {
+    public GameObject gameManager;
+
     public string input;
 
     private static int[] letters = new int[26] {65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 
@@ -34,19 +36,19 @@ public class Mechanism : MonoBehaviour
         letter = plugBoard(letter);
 
         //go through rotors
-        letter = rotor(letter);
+        letter = rotor1(letter);
 
-        letter = rotor(letter);
+        letter = rotor2(letter);
 
-        letter = rotor(letter);
+        letter = rotor3(letter);
 
         letter = reflector(letter);
 
-        letter = rotor(letter);
+        letter = rotor3(letter);
 
-        letter = rotor(letter);
+        letter = rotor2(letter);
 
-        letter = rotor(letter);
+        letter = rotor1(letter);
 
         //check plug board again
         letter = plugBoard(letter);
@@ -77,8 +79,15 @@ public class Mechanism : MonoBehaviour
 
 
     //reminder put back to private after testing.
-    public int rotor(int input)
+    public int rotor1(int input)
     {
+        input += gameManager.GetComponent<Game_Manager>().rotor1Turn;
+
+        if (input > 90)
+        {
+            input -= 26;
+        }
+
         int output;
         int check = ArrayUtility.IndexOf(letters, input);
 
@@ -86,4 +95,67 @@ public class Mechanism : MonoBehaviour
 
         return output;
     }
+
+    public int rotor2(int input)
+    {
+        input += gameManager.GetComponent<Game_Manager>().rotor2Turn;
+
+        if (input > 90)
+        {
+            input -= 26;
+        }
+
+        int output;
+        int check = ArrayUtility.IndexOf(letters, input);
+
+        output = rotorChange[check];
+
+        return output;
+    }
+
+    public int rotor3(int input)
+    {
+        input += gameManager.GetComponent<Game_Manager>().rotor3Turn;
+
+        if (input > 90)
+        {
+            input -= 26;
+        }
+
+        int output;
+        int check = ArrayUtility.IndexOf(letters, input);
+
+        output = rotorChange[check];
+
+        return output;
+    }
+/*
+ *  Changes from Rotor
+ *  A   -->     S
+ *  B   -->     Q
+ *  C   -->     
+ *  D
+ *  E
+ *  F
+ *  G
+ *  H
+ *  I
+ *  J
+ *  K
+ *  L
+ *  M
+ *  N
+ *  O
+ *  P
+ *  Q
+ *  R
+ *  S
+ *  T
+ *  U
+ *  V
+ *  W
+ *  X
+ *  Y
+ *  Z
+*/
 }
