@@ -130,32 +130,32 @@ public class Mechanism : MonoBehaviour
         return output;
     }
 /*
- *  Changes from Rotor
- *  A   -->     S
- *  B   -->     Q
- *  C   -->     
- *  D
- *  E
- *  F
- *  G
- *  H
- *  I
- *  J
- *  K
- *  L
- *  M
- *  N
- *  O
- *  P
- *  Q
- *  R
- *  S
- *  T
- *  U
- *  V
- *  W
- *  X
- *  Y
- *  Z
+ *  Changes from Rotor               Changes from Reflector
+ *   A     -->     S                    A     -->     I
+ *   B     -->     Q                    B     -->     X
+ *   C     -->     D                    C     -->     U
+ *   D     -->     F                    D     -->     H
+ *   E     -->     H                    E     -->     F
+ *   F     -->     J                    F     -->     E
+ *   G     -->     L                    G     -->     Z
+ *   H     -->     N                    H     -->     D
+ *   I     -->     E                    I     -->     A
+ *   J     -->     R                    J     -->     O
+ *   K     -->     T                    K     -->     M
+ *   L     -->     V                    L     -->     T
+ *   M     -->     Z                    M     -->     K
+ *   N     -->     X                    N     -->     Q
+ *   O     -->     B                    O     -->     J
+ *   P     -->     P                    P     -->     W
+ *   Q     -->     A                    Q     -->     N
+ *   R     -->     G                    R     -->     S
+ *   S     -->     K                    S     -->     R
+ *   T     -->     Y                    T     -->     L
+ *   U     -->     I                    U     -->     C
+ *   V     -->     C                    V     -->     Y
+ *   W     -->     M                    W     -->     P
+ *   X     -->     O                    X     -->     B
+ *   Y     -->     W                    Y     -->     V
+ *   Z     -->     U                    Z     -->     G
 */
 }

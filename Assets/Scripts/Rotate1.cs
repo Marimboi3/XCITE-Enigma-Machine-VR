@@ -23,6 +23,6 @@ public class Rotate1 : MonoBehaviour
 
     public void rotate()
     {
-        transform.Rotate(angle, 0, 0);
+        transform.Rotate(-angle, 0, 0);
     }
 }

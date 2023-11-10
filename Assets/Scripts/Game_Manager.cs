@@ -33,37 +33,37 @@ public class Game_Manager : MonoBehaviour
         //encryption.text = word;
         //Debug.Log("Encryption: " + encryption.text);
         Debug.Log("Word: " + word);
-    }
+        /*}
 
-    // Update is called once per frame
-    void Update()
-    {
-        int input = 65;
+        // Update is called once per frame
+        void Update()
+        {
+            int input = 65;*/
         //Wait for the user to input a letter
 
         //Input letter into the mechanism
-        letterNum = mechanism.GetComponent<Mechanism>().letterInput(input);
+        letterNum = mechanism.GetComponent<Mechanism>().letterInput(text);
 
         Debug.Log((char)letterNum);
 
         rotor1Turn += 1;
         rotor1.GetComponent<Rotate1>().rotate();
 
-        if (rotor1Turn > 26)
+        if (rotor1Turn > 25)
         {
             rotor1Turn -= 26;
             rotor2Turn += 1;
             rotor2.GetComponent<Rotate1>().rotate();
         }
 
-        if (rotor2Turn > 26)
+        if (rotor2Turn > 25)
         {
             rotor2Turn -= 26;
             rotor3Turn += 1;
             rotor3.GetComponent<Rotate1>().rotate();
         }
 
-        if (rotor3Turn > 26)
+        if (rotor3Turn > 25)
         {
             rotor3Turn -= 26;
         }
