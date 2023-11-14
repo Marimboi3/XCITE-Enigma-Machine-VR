@@ -774,11 +774,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 83
           m_FloatArgument: 0
           m_StringArgument: 83
           m_BoolArgument: 0
@@ -1147,11 +1147,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 86
           m_FloatArgument: 0
           m_StringArgument: 86
           m_BoolArgument: 0
@@ -1466,11 +1466,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 67
           m_FloatArgument: 0
           m_StringArgument: 67
           m_BoolArgument: 0
@@ -1600,11 +1600,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 78
           m_FloatArgument: 0
           m_StringArgument: 78
           m_BoolArgument: 0
@@ -2098,11 +2098,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 80
           m_FloatArgument: 0
           m_StringArgument: 80
           m_BoolArgument: 0
@@ -2339,11 +2339,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 73
           m_FloatArgument: 0
           m_StringArgument: 73
           m_BoolArgument: 0
@@ -2577,11 +2577,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 72
           m_FloatArgument: 0
           m_StringArgument: 72
           m_BoolArgument: 0
@@ -3067,11 +3067,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 88
           m_FloatArgument: 0
           m_StringArgument: 88
           m_BoolArgument: 0
@@ -3201,11 +3201,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 69
           m_FloatArgument: 0
           m_StringArgument: 69
           m_BoolArgument: 0
@@ -3651,7 +3651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &706236785
 Transform:
   m_ObjectHideFlags: 0
@@ -3902,11 +3902,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 89
           m_FloatArgument: 0
           m_StringArgument: 89
           m_BoolArgument: 0
@@ -4205,11 +4205,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 68
           m_FloatArgument: 0
           m_StringArgument: 68
           m_BoolArgument: 0
@@ -4852,11 +4852,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 74
           m_FloatArgument: 0
           m_StringArgument: 74
           m_BoolArgument: 0
@@ -5020,11 +5020,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 75
           m_FloatArgument: 0
           m_StringArgument: 75
           m_BoolArgument: 0
@@ -5289,11 +5289,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 90
           m_FloatArgument: 0
           m_StringArgument: 90
           m_BoolArgument: 0
@@ -5472,7 +5472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1176235903
 Transform:
   m_ObjectHideFlags: 0
@@ -5589,11 +5589,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 76
           m_FloatArgument: 0
           m_StringArgument: 76
           m_BoolArgument: 0
@@ -5723,11 +5723,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 87
           m_FloatArgument: 0
           m_StringArgument: 87
           m_BoolArgument: 0
@@ -6494,11 +6494,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 82
           m_FloatArgument: 0
           m_StringArgument: 82
           m_BoolArgument: 0
@@ -6628,11 +6628,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 84
           m_FloatArgument: 0
           m_StringArgument: 84
           m_BoolArgument: 0
@@ -7134,11 +7134,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 71
           m_FloatArgument: 0
           m_StringArgument: 71
           m_BoolArgument: 0
@@ -7419,11 +7419,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 66
           m_FloatArgument: 0
           m_StringArgument: 66
           m_BoolArgument: 0
@@ -8346,11 +8346,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 70
           m_FloatArgument: 0
           m_StringArgument: 70
           m_BoolArgument: 0
@@ -8622,11 +8622,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 79
           m_FloatArgument: 0
           m_StringArgument: 79
           m_BoolArgument: 0
@@ -9009,11 +9009,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 65
           m_FloatArgument: 0
           m_StringArgument: 65
           m_BoolArgument: 0
@@ -9153,9 +9153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc8b0703bba686459052946b690cd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotor1Turn: 0
-  rotor2Turn: 0
-  rotor3Turn: 0
   mechanism: {fileID: 1046840508}
   rotor1: {fileID: 680258592}
   rotor2: {fileID: 397860599}
@@ -9454,11 +9451,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 85
           m_FloatArgument: 0
           m_StringArgument: 85
           m_BoolArgument: 0
@@ -9588,11 +9585,11 @@ MonoBehaviour:
       - m_Target: {fileID: 2008984956}
         m_TargetAssemblyTypeName: Game_Manager, Assembly-CSharp
         m_MethodName: message
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 77
           m_FloatArgument: 0
           m_StringArgument: 77
           m_BoolArgument: 0
@@ -44745,7 +44742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &6168414015388059681
 GameObject:
   m_ObjectHideFlags: 0
@@ -47532,7 +47529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6623767635891209597
 Transform:
   m_ObjectHideFlags: 0

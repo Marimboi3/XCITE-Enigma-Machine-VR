@@ -6,11 +6,10 @@ using UnityEngine.UI;
 
 public class Game_Manager : MonoBehaviour
 {
-    public int rotor1Turn = 0;
-    public int rotor2Turn = 0;
-    public int rotor3Turn = 0;
+    List<int> rotorTurn = new List<int>() { 0, 0, 0 };
     private int letterNum;
     string word = null;
+    string encryption = null;
     int wordIndex = 0;
     string alpha;
     //public Text encryption = null;
@@ -44,32 +43,40 @@ public class Game_Manager : MonoBehaviour
         //Input letter into the mechanism
         letterNum = mechanism.GetComponent<Mechanism>().letterInput(text);
 
-        Debug.Log((char)letterNum);
+        encryption = encryption + (char)letterNum;
 
-        rotor1Turn += 1;
+        Debug.Log("Encrypted message is: " + encryption);
+
+
+        rotorTurn[0] += 1;
         rotor1.GetComponent<Rotate1>().rotate();
 
-        if (rotor1Turn > 25)
+        if (rotorTurn[0] > 25)
         {
-            rotor1Turn -= 26;
-            rotor2Turn += 1;
+            rotorTurn[0] -= 26;
+            rotorTurn[1] += 1;
             rotor2.GetComponent<Rotate1>().rotate();
         }
 
-        if (rotor2Turn > 25)
+        if (rotorTurn[1] > 25)
         {
-            rotor2Turn -= 26;
-            rotor3Turn += 1;
+            rotorTurn[1] -= 26;
+            rotorTurn[2] += 1;
             rotor3.GetComponent<Rotate1>().rotate();
         }
 
-        if (rotor3Turn > 25)
+        if (rotorTurn[2] > 25)
         {
-            rotor3Turn -= 26;
+            rotorTurn[2] -= 26;
         }
 
         //Output the letter into the light panel
 
 
+    }
+
+    public List<int> getRotor()
+    {
+        return rotorTurn;
     }
 }

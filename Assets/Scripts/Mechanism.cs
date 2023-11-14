@@ -32,23 +32,67 @@ public class Mechanism : MonoBehaviour
     // Update is called once per frame
     public int letterInput(int letter)
     {
+        List<int> rotorTurn = gameManager.GetComponent<Game_Manager>().getRotor();
+
         //check letter from plug board to switch letter
         letter = plugBoard(letter);
 
         //go through rotors
+        letter += rotorTurn[0];
         letter = rotor1(letter);
+        letter -= rotorTurn[0];
 
-        letter = rotor2(letter);
+        if (letter < 65)
+        {
+            letter += 26;
+        }
 
-        letter = rotor3(letter);
+        letter += rotorTurn[1];
+        letter = rotor1(letter);
+        letter -= rotorTurn[1];
+
+        if (letter < 65)
+        {
+            letter += 26;
+        }
+
+        letter += rotorTurn[2];
+        letter = rotor1(letter);
+        letter -= rotorTurn[2];
+
+        if (letter < 65)
+        {
+            letter += 26;
+        }
 
         letter = reflector(letter);
 
-        letter = rotor3(letter);
+        letter += rotorTurn[2];
+        letter = rotor1return(letter);
+        letter -= rotorTurn[2];
 
-        letter = rotor2(letter);
+        if (letter < 65)
+        {
+            letter += 26;
+        }
 
-        letter = rotor1(letter);
+        letter += rotorTurn[1];
+        letter = rotor1return(letter);
+        letter -= rotorTurn[1];
+
+        if (letter < 65)
+        {
+            letter += 26;
+        }
+
+        letter += rotorTurn[0];
+        letter = rotor1return(letter);
+        letter -= rotorTurn[0];
+
+        if (letter < 65)
+        {
+            letter += 26;
+        }
 
         //check plug board again
         letter = plugBoard(letter);
@@ -79,10 +123,8 @@ public class Mechanism : MonoBehaviour
 
 
     //reminder put back to private after testing.
-    public int rotor1(int input)
+    private int rotor1(int input)
     {
-        input += gameManager.GetComponent<Game_Manager>().rotor1Turn;
-
         if (input > 90)
         {
             input -= 26;
@@ -96,66 +138,49 @@ public class Mechanism : MonoBehaviour
         return output;
     }
 
-    public int rotor2(int input)
+    private int rotor1return(int input)
     {
-        input += gameManager.GetComponent<Game_Manager>().rotor2Turn;
-
         if (input > 90)
         {
             input -= 26;
         }
 
         int output;
-        int check = ArrayUtility.IndexOf(letters, input);
+        int check = ArrayUtility.IndexOf(rotorChange, input);
 
-        output = rotorChange[check];
-
-        return output;
-    }
-
-    public int rotor3(int input)
-    {
-        input += gameManager.GetComponent<Game_Manager>().rotor3Turn;
-
-        if (input > 90)
-        {
-            input -= 26;
-        }
-
-        int output;
-        int check = ArrayUtility.IndexOf(letters, input);
-
-        output = rotorChange[check];
+        output = letters[check];
 
         return output;
     }
-/*
- *  Changes from Rotor               Changes from Reflector
- *   A     -->     S                    A     -->     I
- *   B     -->     Q                    B     -->     X
- *   C     -->     D                    C     -->     U
- *   D     -->     F                    D     -->     H
- *   E     -->     H                    E     -->     F
- *   F     -->     J                    F     -->     E
- *   G     -->     L                    G     -->     Z
- *   H     -->     N                    H     -->     D
- *   I     -->     E                    I     -->     A
- *   J     -->     R                    J     -->     O
- *   K     -->     T                    K     -->     M
- *   L     -->     V                    L     -->     T
- *   M     -->     Z                    M     -->     K
- *   N     -->     X                    N     -->     Q
- *   O     -->     B                    O     -->     J
- *   P     -->     P                    P     -->     W
- *   Q     -->     A                    Q     -->     N
- *   R     -->     G                    R     -->     S
- *   S     -->     K                    S     -->     R
- *   T     -->     Y                    T     -->     L
- *   U     -->     I                    U     -->     C
- *   V     -->     C                    V     -->     Y
- *   W     -->     M                    W     -->     P
- *   X     -->     O                    X     -->     B
- *   Y     -->     W                    Y     -->     V
- *   Z     -->     U                    Z     -->     G
-*/
+
+
+    /*
+     *  Changes from Rotor               Changes from Reflector
+     *   A     -->     S                    A     -->     I
+     *   B     -->     Q                    B     -->     X
+     *   C     -->     D                    C     -->     U
+     *   D     -->     F                    D     -->     H
+     *   E     -->     H                    E     -->     F
+     *   F     -->     J                    F     -->     E
+     *   G     -->     L                    G     -->     Z
+     *   H     -->     N                    H     -->     D
+     *   I     -->     E                    I     -->     A
+     *   J     -->     R                    J     -->     O
+     *   K     -->     T                    K     -->     M
+     *   L     -->     V                    L     -->     T
+     *   M     -->     Z                    M     -->     K
+     *   N     -->     X                    N     -->     Q
+     *   O     -->     B                    O     -->     J
+     *   P     -->     P                    P     -->     W
+     *   Q     -->     A                    Q     -->     N
+     *   R     -->     G                    R     -->     S
+     *   S     -->     K                    S     -->     R
+     *   T     -->     Y                    T     -->     L
+     *   U     -->     I                    U     -->     C
+     *   V     -->     C                    V     -->     Y
+     *   W     -->     M                    W     -->     P
+     *   X     -->     O                    X     -->     B
+     *   Y     -->     W                    Y     -->     V
+     *   Z     -->     U                    Z     -->     G
+    */
 }

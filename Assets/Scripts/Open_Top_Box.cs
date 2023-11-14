@@ -14,7 +14,7 @@ public class Open_Top_Box : MonoBehaviour
 
     private void Start()
     {
-        transform.Rotate(0, 180, 0, Space.World);
+        transform.Rotate(0, 0, 0, Space.Self);
     }
     private void Update()
     {
