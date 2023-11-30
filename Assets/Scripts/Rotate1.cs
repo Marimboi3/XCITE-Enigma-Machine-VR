@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class Rotate1 : MonoBehaviour
 {
-    private float angle = 360 / 26;
+    private float angle = 360 / 26f;
     //private float totalRot = 0;
     //private float speed = 80;
 

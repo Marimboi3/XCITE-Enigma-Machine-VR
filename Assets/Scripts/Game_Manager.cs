@@ -74,7 +74,7 @@ public class Game_Manager : MonoBehaviour
 
 
     }
-
+ 
     public List<int> getRotor()
     {
         return rotorTurn;
