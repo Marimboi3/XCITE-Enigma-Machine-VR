@@ -11,8 +11,9 @@ public class Cipher_Mechanism : MonoBehaviour
     private int zRotation;
 
     private string testMessage = "ALEXIS";
+    private string newMessage;
     private int testAchar = (int)'A';
-    private int testEchar = (int)'H';
+    private int testEchar = (int)'T';
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,18 @@ public class Cipher_Mechanism : MonoBehaviour
         for(int i = 0; i < asciiArray.Length; i++)
         {
             asciiArray[i] += change;
+
+            if (asciiArray[i] > 90)
+            {
+                asciiArray[i] -= 26;
+            }
+
+            newMessage += (char)asciiArray[i];
+
+            Debug.Log((char)asciiArray[i]);
         }
+
+        Debug.Log(newMessage);
 
         return message;
     }
