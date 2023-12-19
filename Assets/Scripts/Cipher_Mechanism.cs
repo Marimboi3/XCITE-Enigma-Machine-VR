@@ -10,10 +10,10 @@ public class Cipher_Mechanism : MonoBehaviour
     private int changeAmount;
     private int zRotation;
 
-    private string testMessage = "ALEXIS";
+    private string testMessage = "HELLOWORLD";
     private string newMessage;
     private int testAchar = (int)'A';
-    private int testEchar = (int)'T';
+    private int testEchar = (int)'E';
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class Cipher_Mechanism : MonoBehaviour
         //pick letter change
 
         //rotate the knob
-        changeAmount = mainKnob.GetComponent<Main_Knob_Rotation>().letterChange(testAchar, testEchar);
+        //changeAmount = mainKnob.GetComponent<Main_Knob_Rotation>().letterChange(testAchar, testEchar);
 
         //change the message
         messageOutput(testMessage, changeAmount);
