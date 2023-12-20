@@ -15,7 +15,7 @@ public class Open_Front : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(transform.rotation.eulerAngles.x);
+        transform.Rotate(0, 0, 0, Space.World);
     }
 
     // Update is called once per frame

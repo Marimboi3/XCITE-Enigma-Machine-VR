@@ -12,6 +12,10 @@ public class Open_Top_Box : MonoBehaviour
 
     private float totalRot = 0;
 
+    private void Start()
+    {
+        transform.Rotate(0, 0, 0, Space.Self);
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
