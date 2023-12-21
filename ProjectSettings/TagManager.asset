@@ -8,6 +8,8 @@ TagManager:
   - MainBase
   - SideKnob
   - SideBase
+  - Left
+  - Right
   layers:
   - Default
   - TransparentFX

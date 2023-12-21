@@ -10,16 +10,17 @@ public class Cipher_Mechanism : MonoBehaviour
 
     // Flag indicating if the knob has been rotated
     private bool knobRotated = false;
+    private bool vowelSwitch = false;
 
     // Amount of change received from the knob rotation
     private int changeAmount;
 
     // Initial test message
-    private string testMessage = "ALEXIS";
+    private string testMessage = "ALEXIS ROCKS";
 
-    // Variables to store the old and new messages after the rotation
+    // Variables to store the ascii and new messages after the rotation
     private string newMessage;
-    private string oldMessage;
+    private string asciiMessage;
 
     // Update is called once per frame
     void Update()
@@ -38,9 +39,9 @@ public class Cipher_Mechanism : MonoBehaviour
     // Function to apply the Caesar cipher to a given message
     public string messageOutput(string message, int change)
     {
-        // Reset the old and new message strings
+        // Reset the ascii and new message strings
         newMessage = "";
-        oldMessage = "";
+        asciiMessage = "";
 
         // Convert the message to an array of ASCII values
         int[] asciiArray = message.Select(c => (int)c).ToArray();
@@ -48,28 +49,118 @@ public class Cipher_Mechanism : MonoBehaviour
         // Iterate through each character in the ASCII array
         for (int i = 0; i < asciiArray.Length; i++)
         {
-            // Apply the Caesar cipher by adding the change amount
-            asciiArray[i] += change;
-
-            // Wrap around if the ASCII value exceeds bounds
-            if (asciiArray[i] > 90)
+            if (vowelSwitch)
             {
-                asciiArray[i] -= 26;
+                switch (asciiArray[i])
+                {
+                    case 65:
+                        asciiArray[i] = 0;
+
+                        // Build the message string with ASCII values
+                        asciiMessage += asciiArray[i] + " ";
+
+                        // Build the new message string with characters
+                        newMessage += asciiArray[i];
+                        break;
+                    case 69:
+                        asciiArray[i] = 1;
+
+                        // Build the message string with ASCII values
+                        asciiMessage += asciiArray[i] + " ";
+
+                        // Build the new message string with characters
+                        newMessage += asciiArray[i];
+                        break;
+                    case 73:
+                        asciiArray[i] = 2;
+
+                        // Build the message string with ASCII values
+                        asciiMessage += asciiArray[i] + " ";
+
+                        // Build the new message string with characters
+                        newMessage += asciiArray[i];
+                        break;
+                    case 79:
+                        asciiArray[i] = 3;
+
+                        // Build the message string with ASCII values
+                        asciiMessage += asciiArray[i] + " ";
+
+                        // Build the new message string with characters
+                        newMessage += asciiArray[i];
+                        break;
+                    case 85:
+                        asciiArray[i] = 4;
+
+                        // Build the message string with ASCII values
+                        asciiMessage += asciiArray[i] + " ";
+
+                        // Build the new message string with characters
+                        newMessage += asciiArray[i];
+                        break;
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                        break;
+                    case 32:
+                        asciiMessage += asciiArray[i] + " ";
+                        newMessage += (char)asciiArray[i];
+                        break;
+                    default:
+                        // Apply the Caesar cipher by adding the change amount
+                        asciiArray[i] += change;
+
+                        // Wrap around if the ASCII value exceeds bounds
+                        if (asciiArray[i] > 90)
+                        {
+                            asciiArray[i] -= 26;
+                        }
+                        else if (asciiArray[i] < 65)
+                        {
+                            asciiArray[i] += 26;
+                        }
+
+                        // Build the message string with ASCII values
+                        asciiMessage += asciiArray[i] + " ";
+
+                        // Build the new message string with characters
+                        newMessage += (char)asciiArray[i];
+                        break;
+
+                }
             }
-            else if (asciiArray[i] < 65)
+            else
             {
-                asciiArray[i] += 26;
+                if (asciiArray[i] != 32)
+                {
+                    // Apply the Caesar cipher by adding the change amount
+                    asciiArray[i] += change;
+
+                    // Wrap around if the ASCII value exceeds bounds
+                    if (asciiArray[i] > 90)
+                    {
+                        asciiArray[i] -= 26;
+                    }
+                    else if (asciiArray[i] < 65)
+                    {
+                        asciiArray[i] += 26;
+                    }
+                }
+
+                // Build the message string with ASCII values
+                asciiMessage += asciiArray[i] + " ";
+
+                // Build the new message string with characters
+                newMessage += (char)asciiArray[i];
             }
-
-            // Build the old message string with ASCII values
-            oldMessage += asciiArray[i] + " ";
-
-            // Build the new message string with characters
-            newMessage += (char)asciiArray[i];
+            
+            
         }
 
-        // Log the old and new messages to the console
-        Debug.Log("Old Message (ASCII): " + oldMessage);
+        // Log the ascii and new messages to the console
+        Debug.Log("ASCII Message: " + asciiMessage);
         Debug.Log("New Message: " + newMessage);
 
         // Return the original message (unused in the current implementation)
@@ -84,5 +175,11 @@ public class Cipher_Mechanism : MonoBehaviour
 
         // Set the flag to indicate that the knob has been rotated
         knobRotated = true;
+    }
+
+    public void LeftSwitch(bool state)
+    {
+        vowelSwitch = state;
+        Debug.Log(vowelSwitch);
     }
 }
