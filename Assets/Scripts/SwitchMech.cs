@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class SwitchMech : MonoBehaviour
 {
-    public bool vowelSwitch;
+    public bool vowelSwitch = false;
     public bool switchOn = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -32,6 +26,13 @@ public class SwitchMech : MonoBehaviour
 
     public void LeftSwitch(bool state)
     {
+        switchOn = state;
+        vowelSwitch = true;
+    }
+
+    public void RightSwitch(bool state)
+    {
+        Debug.Log("Switched right!");
         switchOn = state;
         vowelSwitch = true;
     }

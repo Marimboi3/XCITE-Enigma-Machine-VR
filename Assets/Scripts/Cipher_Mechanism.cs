@@ -180,6 +180,12 @@ public class Cipher_Mechanism : MonoBehaviour
     public void LeftSwitch(bool state)
     {
         vowelSwitch = state;
+        knobRotated = true;
         Debug.Log(vowelSwitch);
+    }
+
+    public void RightSwitch(bool state)
+    {
+
     }
 }

@@ -13,6 +13,7 @@ public class Main_Knob_Rotation : MonoBehaviour
     // Variables to manage rotation state and user selections
     private bool isRotating = false;
     private bool leftSwitch = false;
+    private bool rightSwitch = false;
     private char knobSelectedLetter;
     private int knobASCII;
     private char baseSelectedLetter;
@@ -86,6 +87,23 @@ public class Main_Knob_Rotation : MonoBehaviour
                         
                         cipherMechanism.LeftSwitch(leftSwitch);
                         switchMech.LeftSwitch(leftSwitch);
+                    }
+                }
+                else if (clickedObject.CompareTag("Right"))
+                {
+                    if (rightSwitch)
+                    {
+                        rightSwitch = false;
+
+                        cipherMechanism.RightSwitch(rightSwitch);
+                        switchMech.RightSwitch(rightSwitch);
+                    }
+                    else
+                    {
+                        rightSwitch = true;
+
+                        cipherMechanism.RightSwitch(rightSwitch);
+                        switchMech.RightSwitch(rightSwitch);
                     }
                 }
             }
