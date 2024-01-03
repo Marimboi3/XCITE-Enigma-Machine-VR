@@ -89,23 +89,6 @@ public class Main_Knob_Rotation : MonoBehaviour
                         switchMech.LeftSwitch(leftSwitch);
                     }
                 }
-                else if (clickedObject.CompareTag("Right"))
-                {
-                    if (rightSwitch)
-                    {
-                        rightSwitch = false;
-
-                        cipherMechanism.RightSwitch(rightSwitch);
-                        switchMech.RightSwitch(rightSwitch);
-                    }
-                    else
-                    {
-                        rightSwitch = true;
-
-                        cipherMechanism.RightSwitch(rightSwitch);
-                        switchMech.RightSwitch(rightSwitch);
-                    }
-                }
             }
 
             // Check if the knob is not rotating and both letters are selected

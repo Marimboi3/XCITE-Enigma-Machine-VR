@@ -7,8 +7,10 @@ public class Side_Knob_Rotation : MonoBehaviour
     public Transform knob;
     public float rotationSpeed = 5f;
     public Cipher_Mechanism cipherMechanism;
+    public SwitchMech switchMech;
 
     private bool isRotating = false;
+    private bool rightSwitch = false;
     private char knobSelectedLetter;
     private int knobASCII;
     private char baseSelectedLetter;
@@ -33,16 +35,7 @@ public class Side_Knob_Rotation : MonoBehaviour
                     knobSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
                     Debug.Log("Side Letter Chosen: " +  knobSelectedLetter);
 
-                    knobASCII = (int)knobSelectedLetter + knobOffset;
-
-                    if (knobASCII > 90)
-                    {
-                        knobASCII -= 26;
-                    }
-                    else if (knobASCII < 65)
-                    {
-                        knobASCII += 26;
-                    }
+                    knobASCII = (int)knobSelectedLetter;
 
                     Debug.Log("Offset Knob Letter: " + (char)knobASCII);
                     Debug.Log("Offset ASCII: " + knobASCII);
@@ -55,12 +48,32 @@ public class Side_Knob_Rotation : MonoBehaviour
                     baseASCII = (int)baseSelectedLetter;
                     Debug.Log("Letter ASCII: " + baseASCII);
                 }
+                else if (clickedObject.CompareTag("Right"))
+                {
+                    if (rightSwitch)
+                    {
+                        rightSwitch = false;
+
+                        cipherMechanism.RightSwitch(rightSwitch);
+                        switchMech.RightSwitch(rightSwitch);
+                    }
+                    else
+                    {
+                        rightSwitch = true;
+
+                        cipherMechanism.RightSwitch(rightSwitch);
+                        switchMech.RightSwitch(rightSwitch);
+                    }
+                }
             }
         }
 
         if(!isRotating && knobSelectedLetter != '\0' && baseSelectedLetter != '\0')
         {
             int localChange = (int)knobSelectedLetter - baseASCII;
+            Debug.Log("Message Side Offset: " +  localChange);
+
+
         }
     }
 }
