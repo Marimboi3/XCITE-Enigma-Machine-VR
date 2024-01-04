@@ -11,7 +11,7 @@ public class Side_Knob_Rotation : MonoBehaviour
 
     private bool isRotating = false;
     private bool rightSwitch = false;
-    private char knobSelectedLetter;
+    private int knobSelectedLetter;
     private int knobASCII;
     private char baseSelectedLetter;
     private int baseASCII;
@@ -33,20 +33,31 @@ public class Side_Knob_Rotation : MonoBehaviour
                 if (clickedObject.CompareTag("SideKnob"))
                 {
                     knobSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
-                    Debug.Log("Side Letter Chosen: " +  knobSelectedLetter);
+                    Debug.Log("Knob Position Chosen: " +  knobSelectedLetter);
 
-                    knobASCII = (int)knobSelectedLetter;
+                    Debug.Log("Knob Offset Again: " + knobOffset);
 
-                    Debug.Log("Offset Knob Letter: " + (char)knobASCII);
+                    knobASCII = (int)knobSelectedLetter + knobOffset - 48;
+
+                    if (knobASCII < 1)
+                    {
+                        knobASCII += 5;
+                    }
+                    else if (knobASCII > 5)
+                    {
+                        knobASCII -= 5;
+                    }
+
+                    //Debug.Log("Offset Knob Letter: " + (char)knobASCII);
                     Debug.Log("Offset ASCII: " + knobASCII);
                 }
                 else if (clickedObject.CompareTag("SideBase"))
                 {
                     baseSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
-                    Debug.Log("Selected Base Letter: " + baseSelectedLetter);
+                    Debug.Log("Base Position Selected: " + (int)baseSelectedLetter);
 
-                    baseASCII = (int)baseSelectedLetter;
-                    Debug.Log("Letter ASCII: " + baseASCII);
+                    baseASCII = (int)baseSelectedLetter - 48;
+                    Debug.Log("Position Number: " + baseASCII);
                 }
                 else if (clickedObject.CompareTag("Right"))
                 {
@@ -70,10 +81,45 @@ public class Side_Knob_Rotation : MonoBehaviour
 
         if(!isRotating && knobSelectedLetter != '\0' && baseSelectedLetter != '\0')
         {
-            int localChange = (int)knobSelectedLetter - baseASCII;
+            int localChange = knobASCII - baseASCII;
             Debug.Log("Message Side Offset: " +  localChange);
 
+            cipherMechanism.ReceiveCons(localChange);
 
+            isRotating = true;
+            RotateToSelectedLetters();
+
+            knobSelectedLetter = '\0';
+            baseSelectedLetter = '\0';
         }
+    }
+
+    private void RotateToSelectedLetters()
+    {
+        int anglePerLetter = 360 / 5;
+
+        int targetRotation = (int)currentRotation + (baseASCII - knobASCII) * anglePerLetter;
+        Debug.Log("Target Rotation: " +  targetRotation);
+
+        knobOffset = targetRotation / anglePerLetter;
+        Debug.Log("Knob Offset: " +  knobOffset);
+
+        Quaternion targetQuaternion = Quaternion.Euler(10f, 0, targetRotation);
+
+        StartCoroutine(RotateKnob(targetQuaternion));
+    }
+
+    private IEnumerator RotateKnob(Quaternion targetRotation)
+    {
+        while (Quaternion.Angle(knob.localRotation, targetRotation) > 0.1f)
+        {
+            knob.localRotation = Quaternion.Slerp(knob.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        isRotating = false;
+
+        currentRotation = knob.localRotation.eulerAngles.z;
+        //Debug.Log("Current Z Rotation: " +  currentRotation);
     }
 }

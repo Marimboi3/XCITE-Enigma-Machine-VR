@@ -13,7 +13,6 @@ public class Main_Knob_Rotation : MonoBehaviour
     // Variables to manage rotation state and user selections
     private bool isRotating = false;
     private bool leftSwitch = false;
-    private bool rightSwitch = false;
     private char knobSelectedLetter;
     private int knobASCII;
     private char baseSelectedLetter;

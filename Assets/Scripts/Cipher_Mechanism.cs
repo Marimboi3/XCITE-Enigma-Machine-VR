@@ -24,6 +24,8 @@ public class Cipher_Mechanism : MonoBehaviour
     private string newMessage;
     private string asciiMessage;
 
+    private static int[] letters = new int[5] { 83, 84, 76, 82, 78 };
+
     // Update is called once per frame
     void Update()
     {
@@ -109,10 +111,6 @@ public class Cipher_Mechanism : MonoBehaviour
             
         }
 
-        // Log the ascii and new messages to the console
-        Debug.Log("ASCII Message: " + asciiMessage);
-        Debug.Log("New Message: " + newMessage);
-
         // Return the original message (unused in the current implementation)
         return message;
     }
@@ -182,6 +180,13 @@ public class Cipher_Mechanism : MonoBehaviour
         knobRotated = true;
     }
 
+    public void ReceiveCons(int change)
+    {
+        cons = change;
+        knobRotated = true;
+        Debug.Log(cons);
+    }
+
     public void LeftSwitch(bool state)
     {
         vowelSwitch = state;
@@ -189,10 +194,9 @@ public class Cipher_Mechanism : MonoBehaviour
         Debug.Log(vowelSwitch);
     }
 
-    public void RightSwitch(bool state, int change)
+    public void RightSwitch(bool state)
     {
         consSwitch = state;
-        cons = change;
         knobRotated = true;
         Debug.Log(consSwitch);
     }
