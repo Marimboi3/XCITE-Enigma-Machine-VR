@@ -101,9 +101,22 @@ public class Side_Knob_Rotation : MonoBehaviour
         int targetRotation = (int)currentRotation + (baseASCII - knobASCII) * anglePerLetter;
         Debug.Log("Target Rotation: " +  targetRotation);
 
-        knobOffset = targetRotation / anglePerLetter;
+        knobOffset = (targetRotation/* % 360 + 360*/) / anglePerLetter;
         Debug.Log("Knob Offset: " +  knobOffset);
 
+        if (knobOffset < 0)
+        {
+            knobOffset += 5;
+        }
+        else if (knobOffset > 5)
+        {
+            knobOffset -= 5;
+        }
+
+        Debug.Log("Knob Offset 2: " + knobOffset);
+
+/*        targetRotation %= 360;
+*/
         Quaternion targetQuaternion = Quaternion.Euler(10f, 0, targetRotation);
 
         StartCoroutine(RotateKnob(targetQuaternion));
