@@ -8,9 +8,11 @@ public class Main_Knob_Rotation : MonoBehaviour
     public Transform knob;
     public float rotationSpeed = 5f;
     public Cipher_Mechanism cipherMechanism;
+    public SwitchMech switchMech;
 
     // Variables to manage rotation state and user selections
     private bool isRotating = false;
+    private bool leftSwitch = false;
     private char knobSelectedLetter;
     private int knobASCII;
     private char baseSelectedLetter;
@@ -68,13 +70,31 @@ public class Main_Knob_Rotation : MonoBehaviour
                     baseASCII = (int)baseSelectedLetter;
                     Debug.Log("Letter ASCII: " + baseASCII);
                 }
+                // Check if the vowel switch is clicked
+                else if (clickedObject.CompareTag("Left"))
+                {
+                    if (leftSwitch)
+                    {
+                        leftSwitch = false;
+                        
+                        cipherMechanism.LeftSwitch(leftSwitch);
+                        switchMech.LeftSwitch(leftSwitch);
+                    }
+                    else
+                    {
+                        leftSwitch = true;
+                        
+                        cipherMechanism.LeftSwitch(leftSwitch);
+                        switchMech.LeftSwitch(leftSwitch);
+                    }
+                }
             }
 
             // Check if the knob is not rotating and both letters are selected
             if (!isRotating && knobSelectedLetter != '\0' && baseSelectedLetter != '\0')
             {
                 // Calculate the offset between knob and base letters
-                int localChange = knobASCII - baseASCII;
+                int localChange = (int)knobSelectedLetter - baseASCII;
                 Debug.Log("Message Offset: " + localChange);
 
                 // Send the offset to the Cipher_Mechanism script
