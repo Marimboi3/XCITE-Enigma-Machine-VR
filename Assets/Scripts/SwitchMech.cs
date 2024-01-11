@@ -14,13 +14,13 @@ public class SwitchMech : MonoBehaviour
         {
             transform.Rotate(Vector3.right, -90f);
             vowelSwitch = false;
-            Debug.Log("I turned On!!!");
+            //Debug.Log("I turned On!!!");
         }
         else if (!switchOn && vowelSwitch)
         {
             transform.Rotate(Vector3.right, 90f);
             vowelSwitch = false;
-            Debug.Log("I turned Off ._. ");
+            //Debug.Log("I turned Off ._. ");
         }
     }
 
@@ -32,7 +32,7 @@ public class SwitchMech : MonoBehaviour
 
     public void RightSwitch(bool state)
     {
-        Debug.Log("Switched right!");
+        //Debug.Log("Switched right!");
         switchOn = state;
         vowelSwitch = true;
     }

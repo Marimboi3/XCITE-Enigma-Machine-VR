@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Cipher_Mechanism : MonoBehaviour
 {
     // Reference to the main knob object
     public GameObject mainKnob;
+    public Display_Text screen;
 
     // Flag indicating if the knob has been rotated
     private bool knobRotated = false;
@@ -18,14 +20,20 @@ public class Cipher_Mechanism : MonoBehaviour
     private int cons;
 
     // Initial test message
-    private string testMessage = "ALEXIS ROCKS";
+    public string testMessage = "ALEXIS ROCKS";
+
 
     // Variables to store the ascii and new messages after the rotation
-    private string newMessage;
+    public string newMessage;
     private string asciiMessage;
 
-    private static int[] letters = new int[5] { 83, 84, 76, 82, 78 };
+    private static int[] sideLetters = new int[5] { 83, 84, 76, 82, 78 };
 
+    void Start()
+    {
+        screen.recieveOriginal(testMessage);
+        screen.recieveEncryption(testMessage);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -37,6 +45,8 @@ public class Cipher_Mechanism : MonoBehaviour
 
             // Call the messageOutput function to apply the Caesar cipher
             messageOutput(testMessage, changeAmount);
+
+            screen.recieveEncryption(newMessage);
 
             // Log the ascii and new messages to the console
             Debug.Log("ASCII Message: " + asciiMessage);
@@ -82,9 +92,18 @@ public class Cipher_Mechanism : MonoBehaviour
                     // Build the new message string with characters
                     newMessage += (char)asciiArray[i];
                 }
-            }
+            }/*
+            else if (consSwitch)
+            {
+                asciiArray[i] = consChange(asciiArray[i], cons);
+
+                asciiMessage += asciiArray[i] + " ";
+
+                newMessage += (char)asciiArray[i];
+            }*/
             else
             {
+
                 if (asciiArray[i] != 32)
                 {
                     // Apply the Caesar cipher by adding the change amount
@@ -99,6 +118,11 @@ public class Cipher_Mechanism : MonoBehaviour
                     {
                         asciiArray[i] += 26;
                     }
+                }
+
+                if (consSwitch)
+                {
+                    asciiArray[i] = consChange(asciiArray[i], cons);
                 }
 
                 // Build the message string with ASCII values
@@ -162,9 +186,54 @@ public class Cipher_Mechanism : MonoBehaviour
 
     private int consChange(int value, int cons)
     {
-        switch(value)
+        int tempChange;
+
+        switch (value)
         {
-            case 0:
+            case 83:
+                value = sideLetters[cons];
+                break;
+            case 84:
+                tempChange = cons + 1;
+
+                if (tempChange > 4)
+                {
+                    tempChange -= 5;
+                }
+
+                value = sideLetters[tempChange];
+                break;
+            case 76:
+                tempChange = cons + 2;
+
+                if (tempChange > 4)
+                {
+                    tempChange -= 5;
+                }
+
+                value = sideLetters[tempChange];
+                break;
+            case 82:
+                tempChange = cons + 3;
+
+                if (tempChange > 4)
+                {
+                    tempChange -= 5;
+                }
+
+                value = sideLetters[tempChange];
+                break;
+            case 78:
+                tempChange = cons + 4;
+
+                if (tempChange > 4)
+                {
+                    tempChange -= 5;
+                }
+
+                value = sideLetters[tempChange];
+                break;
+            default:
                 break;
         }
         return value;
@@ -184,7 +253,7 @@ public class Cipher_Mechanism : MonoBehaviour
     {
         cons = change;
         knobRotated = true;
-        Debug.Log(cons);
+        Debug.Log("Cipher Mechanism Received: " + cons);
     }
 
     public void LeftSwitch(bool state)
