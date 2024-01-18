@@ -20,7 +20,7 @@ public class Cipher_Mechanism : MonoBehaviour
     private int cons;
 
     // Initial test message
-    public string testMessage = "ALEXIS ROCKS";
+    private string testMessage = "UCR XCITE IDEA LAB";
 
 
     // Variables to store the ascii and new messages after the rotation
@@ -67,14 +67,25 @@ public class Cipher_Mechanism : MonoBehaviour
         // Iterate through each character in the ASCII array
         for (int i = 0; i < asciiArray.Length; i++)
         {
+            if (asciiArray[i] != 32)
+            {
+                // Apply the Caesar cipher by adding the change amount
+                asciiArray[i] += change;
+
+                // Wrap around if the ASCII value exceeds bounds
+                if (asciiArray[i] > 90)
+                {
+                    asciiArray[i] -= 26;
+                }
+                else if (asciiArray[i] < 65)
+                {
+                    asciiArray[i] += 26;
+                }
+            }
+
             if (vowelSwitch)
             {
                 asciiArray[i] = vowelChange(asciiArray[i], change);
-
-                if (consSwitch)
-                {
-                    asciiArray[i] = consChange(asciiArray[i], cons);
-                }
 
                 if (asciiArray[i] >= 0 && asciiArray[i] <= 4)
                 {
@@ -84,14 +95,14 @@ public class Cipher_Mechanism : MonoBehaviour
                     // Build the new message string with characters
                     newMessage += asciiArray[i];
                 }
-                else
+                /*else
                 {
                     // Build the message string with ASCII values
                     asciiMessage += asciiArray[i] + " ";
 
                     // Build the new message string with characters
                     newMessage += (char)asciiArray[i];
-                }
+                }*/
             }/*
             else if (consSwitch)
             {
@@ -101,24 +112,25 @@ public class Cipher_Mechanism : MonoBehaviour
 
                 newMessage += (char)asciiArray[i];
             }*/
-            else
+
+            if (consSwitch)
+            {
+                asciiArray[i] = consChange(asciiArray[i], cons);
+            }
+
+            if (asciiArray[i] > 5)
+            {
+                // Build the message string with ASCII values
+                asciiMessage += asciiArray[i] + " ";
+
+                // Build the new message string with characters
+                newMessage += (char)asciiArray[i];
+            }
+
+            /*else
             {
 
-                if (asciiArray[i] != 32)
-                {
-                    // Apply the Caesar cipher by adding the change amount
-                    asciiArray[i] += change;
-
-                    // Wrap around if the ASCII value exceeds bounds
-                    if (asciiArray[i] > 90)
-                    {
-                        asciiArray[i] -= 26;
-                    }
-                    else if (asciiArray[i] < 65)
-                    {
-                        asciiArray[i] += 26;
-                    }
-                }
+                
 
                 if (consSwitch)
                 {
@@ -130,7 +142,7 @@ public class Cipher_Mechanism : MonoBehaviour
 
                 // Build the new message string with characters
                 newMessage += (char)asciiArray[i];
-            }
+            }*/
             
             
         }
@@ -165,7 +177,7 @@ public class Cipher_Mechanism : MonoBehaviour
             case 4:
             case 32:
                 break;
-            default:
+            default:/*
                 // Apply the Caesar cipher by adding the change amount
                 value += change;
 
@@ -177,7 +189,7 @@ public class Cipher_Mechanism : MonoBehaviour
                 else if (value < 65)
                 {
                     value += 26;
-                }
+                }*/
                 break;
 
         }
