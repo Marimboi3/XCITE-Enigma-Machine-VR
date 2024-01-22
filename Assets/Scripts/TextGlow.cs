@@ -4,18 +4,69 @@ using UnityEngine;
 
 public class TextGlow : MonoBehaviour
 {
-    // Start is called before the first frame update
     public List<GameObject> Alphabet;
     public Material TextMaterial;
     public Material GlowMaterial;
     public bool OuterText;
+
     private float timer = 2.0f;
-    private float waitTime = 2.0f;
     private bool glow = true;
 
     public bool outerTextSelected = false;
     public bool innerTextSelected = false;
+
     void Start()
+    {
+        ResetMaterials();
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+
+        if (timer > 2.0f)
+        {
+            ToggleGlow();
+            timer = 0.0f;
+        }
+    }
+
+    void ToggleGlow()
+    {
+        foreach (GameObject letter in Alphabet)
+        {
+            Renderer letterRenderer = letter.GetComponent<Renderer>();
+
+            if (glow)
+            {
+                if (OuterText)
+                {
+                    letterRenderer.material = outerTextSelected ? TextMaterial : GlowMaterial;
+                }
+                else
+                {
+                    if (!innerTextSelected)
+                    {
+                        letterRenderer.material = TextMaterial;
+                    }
+                }
+            }
+            else
+            {
+                if (OuterText)
+                {
+                    letterRenderer.material = TextMaterial;
+                }
+                else
+                {
+                    letterRenderer.material = innerTextSelected ? TextMaterial : GlowMaterial;
+                }
+            }
+        }
+        glow = !glow;
+    }
+
+    void ResetMaterials()
     {
         foreach (GameObject letter in Alphabet)
         {
@@ -23,58 +74,8 @@ public class TextGlow : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GlowLetter(GameObject letter)
     {
-        timer += Time.deltaTime;
-
-        if (timer > waitTime)
-        {
-            if (glow)
-            {
-                if (OuterText)
-                {
-                    if (!outerTextSelected)
-                    {
-                        foreach (GameObject letter in Alphabet)
-                        {
-                            letter.GetComponent<Renderer>().material = GlowMaterial;
-                        }
-                    }                  
-                }
-                else
-                {
-                    foreach (GameObject letter in Alphabet)
-                    {
-                        letter.GetComponent<Renderer>().material = TextMaterial;
-                    }
-                }
-
-                glow = false;
-            }
-            else
-            {
-                if (OuterText)
-                {
-                    foreach (GameObject letter in Alphabet)
-                    {
-                        letter.GetComponent<Renderer>().material = TextMaterial;
-                    }
-                }
-                else
-                {
-                    if (!innerTextSelected)
-                    {
-                        foreach (GameObject letter in Alphabet)
-                        {
-                            letter.GetComponent<Renderer>().material = GlowMaterial;
-                        }
-                    }
-                }
-                glow = true;
-            }
-            timer = 0.0f;
-        }
+        letter.GetComponent<Renderer>().material = GlowMaterial;
     }
 }
-
