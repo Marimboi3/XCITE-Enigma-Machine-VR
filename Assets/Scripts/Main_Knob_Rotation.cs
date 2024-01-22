@@ -20,6 +20,11 @@ public class Main_Knob_Rotation : MonoBehaviour
     private int knobOffset = 0;
     private float currentRotation = 0;
 
+
+    // Variables for making text glow
+    public GameObject OuterText;
+    public GameObject InnerText;
+
     // Update is called once per frame
     private void Update()
     {
@@ -39,6 +44,8 @@ public class Main_Knob_Rotation : MonoBehaviour
                 // Check if the knob is clicked
                 if (clickedObject.CompareTag("MainKnob"))
                 {
+                    //set flag
+                    InnerText.GetComponent<TextGlow>().innerTextSelected = true;
                     // Retrieve the selected letter from the knob
                     knobSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
                     Debug.Log("Actual Letter Chosen: " + knobSelectedLetter);
@@ -62,6 +69,9 @@ public class Main_Knob_Rotation : MonoBehaviour
                 // Check if the base is clicked
                 else if (clickedObject.CompareTag("MainBase"))
                 {
+                    //set flag
+                    OuterText.GetComponent<TextGlow>().outerTextSelected = true;
+
                     // Retrieve the selected letter from the base
                     baseSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
                     Debug.Log("Selected Base Letter: " + baseSelectedLetter);
