@@ -41,7 +41,10 @@ public class TextGlow : MonoBehaviour
             {
                 if (OuterText)
                 {
-                    letterRenderer.material = outerTextSelected ? TextMaterial : GlowMaterial;
+                    if (!outerTextSelected)
+                    {
+                        letterRenderer.material = GlowMaterial;
+                    }             
                 }
                 else
                 {
@@ -55,11 +58,17 @@ public class TextGlow : MonoBehaviour
             {
                 if (OuterText)
                 {
-                    letterRenderer.material = TextMaterial;
+                    if (!outerTextSelected)
+                    {
+                        letterRenderer.material = TextMaterial;
+                    }
                 }
                 else
                 {
-                    letterRenderer.material = innerTextSelected ? TextMaterial : GlowMaterial;
+                    if (!innerTextSelected)
+                    {
+                        letterRenderer.material = GlowMaterial;
+                    }     
                 }
             }
         }
@@ -76,6 +85,7 @@ public class TextGlow : MonoBehaviour
 
     public void GlowLetter(GameObject letter)
     {
+        ResetMaterials();
         letter.GetComponent<Renderer>().material = GlowMaterial;
     }
 }
