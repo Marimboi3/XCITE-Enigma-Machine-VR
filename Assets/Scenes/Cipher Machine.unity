@@ -434,6 +434,7 @@ MonoBehaviour:
   - {fileID: 368083782836645816}
   TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
   GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
+  BloomCamera: {fileID: 496819865}
   OuterText: 0
   outerTextSelected: 0
   innerTextSelected: 0
@@ -915,6 +916,7 @@ MonoBehaviour:
   - {fileID: 7921405717345363644}
   TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
   GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
+  BloomCamera: {fileID: 496819865}
   OuterText: 1
   outerTextSelected: 0
   innerTextSelected: 0
