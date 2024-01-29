@@ -318,7 +318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainKnob: {fileID: 1050145994}
   screen: {fileID: 76181609}
-  testMessage: ALEXIS ROCKS
   newMessage: 
 --- !u!4 &187897162
 Transform:
@@ -344,6 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 270782165}
+  - component: {fileID: 270782166}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -393,6 +393,51 @@ Transform:
   m_Father: {fileID: 1050145995}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &270782166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270782164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e855f6787ae72a40ad309ef903a7377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Alphabet:
+  - {fileID: 463500856168103031}
+  - {fileID: 4203888988204621135}
+  - {fileID: 6578147309506639257}
+  - {fileID: 5144359457995254832}
+  - {fileID: 2295050415288447637}
+  - {fileID: 2865512247060864018}
+  - {fileID: 390381865665729289}
+  - {fileID: 3276808764662355697}
+  - {fileID: 7526186225558317897}
+  - {fileID: 7698591337233818437}
+  - {fileID: 2613492328550177383}
+  - {fileID: 7234111958871501607}
+  - {fileID: 7993542956192111709}
+  - {fileID: 1669158917145263002}
+  - {fileID: 2136610135812911032}
+  - {fileID: 3362467631919370874}
+  - {fileID: 8534618338068525838}
+  - {fileID: 7229720701906849066}
+  - {fileID: 4817735957189350062}
+  - {fileID: 4260305984024587442}
+  - {fileID: 3565287637582312416}
+  - {fileID: 6274768427973686526}
+  - {fileID: 7946381668062239258}
+  - {fileID: 2546736035490330827}
+  - {fileID: 7753578458790986910}
+  - {fileID: 368083782836645816}
+  TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
+  GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
+  BloomCamera: {fileID: 496819865}
+  OuterText: 0
+  outerTextSelected: 0
+  innerTextSelected: 0
 --- !u!1 &429602827
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,6 +916,10 @@ MonoBehaviour:
   - {fileID: 7921405717345363644}
   TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
   GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
+  BloomCamera: {fileID: 496819865}
+  OuterText: 1
+  outerTextSelected: 0
+  innerTextSelected: 0
 --- !u!1 &1050145994
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,6 +970,8 @@ MonoBehaviour:
   rotationSpeed: 5
   cipherMechanism: {fileID: 187897161}
   switchMech: {fileID: 22110513}
+  OuterText: {fileID: 830463575}
+  InnerText: {fileID: 270782164}
 --- !u!1 &1204853975
 GameObject:
   m_ObjectHideFlags: 0
