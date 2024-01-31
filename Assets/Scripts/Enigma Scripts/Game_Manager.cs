@@ -19,6 +19,8 @@ public class Game_Manager : MonoBehaviour
     public GameObject rotor2;
     public GameObject rotor3;
 
+    public GameObject Lights;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,9 @@ public class Game_Manager : MonoBehaviour
 
         //Input letter into the mechanism
         letterNum = mechanism.GetComponent<Mechanism>().letterInput(text);
+
+        //FOR LIGHT UP
+        Lights.GetComponent<Light_Up>().GlowLetter((char)letterNum);
 
         encryption = encryption + (char)letterNum;
 
