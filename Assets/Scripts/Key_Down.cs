@@ -4,29 +4,18 @@ using UnityEngine;
 
 public class Key_Down : MonoBehaviour
 {
-    private float speed = 5;
-    private float totTravel = 0;
-    public bool active = false;
+    public int letter;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        //keyPress();
-    }
-
-    // Update is called once per frame
-    public void keyPress()
-    {
-        if (active) 
+        if (Input.GetMouseButtonDown(0))
         {
-            if (totTravel <= 10)
-            {
-                transform.Translate(Vector3.down * Time.deltaTime * speed, Space.World);
-                totTravel += speed * Time.deltaTime;
-            }
-            else if (totTravel >= 0)
-            {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+            if (Physics.Raycast(ray, out hit))
+            {
+                GameObject clickedObject = hit.collider.gameObject;
             }
         }
     }
