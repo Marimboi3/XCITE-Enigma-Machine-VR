@@ -1,33 +1,75 @@
+// Import necessary libraries
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Define the Key_Down class
 public class Key_Down : MonoBehaviour
 {
-    private float speed = 5;
-    private float totTravel = 0;
-    public bool active = false;
+    // Reference to the GameManager object
+    public GameObject gameManager;
 
-    // Start is called before the first frame update
-    void Start()
+    // Flag to track if the key is currently pressed
+    private bool isPressed = false;
+
+    // Method to handle key press
+    public void HandleKeyPress()
     {
-        //keyPress();
+        // Check if the key is not already pressed
+        if (!isPressed)
+        {
+            // Extract the key letter from the object's name
+            string keyLetter = gameObject.name.Replace("_Key", "");
+            Debug.Log("Key Pressed: " + keyLetter);
+
+            // Convert the key letter to a character and get its ASCII value
+            char character = keyLetter[0];
+            int asciiValue = (int)character;
+            Debug.Log("Ascii Value = " + asciiValue);
+
+            // Call the message method in the GameManager with the ASCII value
+            gameManager.GetComponent<Game_Manager>().message(asciiValue);
+
+            // Trigger the key press animation
+            StartCoroutine(KeyPressAnimation());
+
+            // Set the flag to indicate that the key is pressed
+            isPressed = true;
+        }
     }
 
-    // Update is called once per frame
-    public void keyPress()
+    // Coroutine for the key press animation
+    private IEnumerator KeyPressAnimation()
     {
-        if (active) 
-        {
-            if (totTravel <= 10)
-            {
-                transform.Translate(Vector3.down * Time.deltaTime * speed, Space.World);
-                totTravel += speed * Time.deltaTime;
-            }
-            else if (totTravel >= 0)
-            {
+        // Animation duration
+        float duration = 0.1f;
 
-            }
+        // Store the original and target positions for the animation
+        Vector3 originalPosition = transform.position;
+        Vector3 targetPosition = originalPosition - new Vector3(0, 0.1f, 0);
+
+        // First phase of the animation: move down
+        float timeElapsed = 0f;
+        while (timeElapsed < duration)
+        {
+            transform.position = Vector3.Lerp(originalPosition, targetPosition, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
         }
+
+        // Second phase of the animation: move back up
+        timeElapsed = 0f;
+        while (timeElapsed < duration)
+        {
+            transform.position = Vector3.Lerp(targetPosition, originalPosition, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the key is back at its original position
+        transform.position = originalPosition;
+
+        // Reset the flag to indicate that the key is no longer pressed
+        isPressed = false;
     }
 }
