@@ -281,4 +281,9 @@ public class Cipher_Mechanism : MonoBehaviour
         knobRotated = true;
         Debug.Log(consSwitch);
     }
+
+    public bool GetRightSwitch()
+    {
+        return consSwitch;
+    }
 }
