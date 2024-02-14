@@ -343,7 +343,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 270782165}
-  - component: {fileID: 270782166}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -393,51 +392,6 @@ Transform:
   m_Father: {fileID: 2047911056}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &270782166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270782164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e855f6787ae72a40ad309ef903a7377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Alphabet:
-  - {fileID: 463500856168103031}
-  - {fileID: 4203888988204621135}
-  - {fileID: 6578147309506639257}
-  - {fileID: 5144359457995254832}
-  - {fileID: 2295050415288447637}
-  - {fileID: 2865512247060864018}
-  - {fileID: 390381865665729289}
-  - {fileID: 3276808764662355697}
-  - {fileID: 7526186225558317897}
-  - {fileID: 7698591337233818437}
-  - {fileID: 2613492328550177383}
-  - {fileID: 7234111958871501607}
-  - {fileID: 7993542956192111709}
-  - {fileID: 1669158917145263002}
-  - {fileID: 2136610135812911032}
-  - {fileID: 3362467631919370874}
-  - {fileID: 8534618338068525838}
-  - {fileID: 7229720701906849066}
-  - {fileID: 4817735957189350062}
-  - {fileID: 4260305984024587442}
-  - {fileID: 3565287637582312416}
-  - {fileID: 6274768427973686526}
-  - {fileID: 7946381668062239258}
-  - {fileID: 2546736035490330827}
-  - {fileID: 7753578458790986910}
-  - {fileID: 368083782836645816}
-  TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
-  GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
-  BloomCamera: {fileID: 496819865}
-  OuterText: 0
-  outerTextSelected: 0
-  innerTextSelected: 0
 --- !u!1 &429602827
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +798,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830463576}
-  - component: {fileID: 830463577}
   m_Layer: 0
   m_Name: Outer Text
   m_TagString: Untagged
@@ -919,19 +872,53 @@ Transform:
   m_Father: {fileID: 1050145995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &830463577
+--- !u!1 &1050145994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1050145995}
+  - component: {fileID: 1050145996}
+  m_Layer: 0
+  m_Name: Main Knob
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1050145995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050145994}
+  m_LocalRotation: {x: 0.08715466, y: 0, z: 0, w: 0.9961947}
+  m_LocalPosition: {x: 0, y: 0.513, z: 87.812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 830463576}
+  - {fileID: 2047911056}
+  m_Father: {fileID: 6470012615679539472}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+--- !u!114 &1050145996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830463575}
+  m_GameObject: {fileID: 1050145994}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e855f6787ae72a40ad309ef903a7377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Alphabet:
+  OuterAlphabet:
   - {fileID: 8881362698374743101}
   - {fileID: 2152496372575880646}
   - {fileID: 8874859913476069148}
@@ -958,45 +945,38 @@ MonoBehaviour:
   - {fileID: 5899001433099075702}
   - {fileID: 2669015466061981590}
   - {fileID: 7921405717345363644}
+  InnerAlphabet:
+  - {fileID: 463500856168103031}
+  - {fileID: 4203888988204621135}
+  - {fileID: 6578147309506639257}
+  - {fileID: 5144359457995254832}
+  - {fileID: 2295050415288447637}
+  - {fileID: 2865512247060864018}
+  - {fileID: 390381865665729289}
+  - {fileID: 3276808764662355697}
+  - {fileID: 7526186225558317897}
+  - {fileID: 7698591337233818437}
+  - {fileID: 2613492328550177383}
+  - {fileID: 7234111958871501607}
+  - {fileID: 7993542956192111709}
+  - {fileID: 1669158917145263002}
+  - {fileID: 2136610135812911032}
+  - {fileID: 3362467631919370874}
+  - {fileID: 8534618338068525838}
+  - {fileID: 7229720701906849066}
+  - {fileID: 4817735957189350062}
+  - {fileID: 4260305984024587442}
+  - {fileID: 3565287637582312416}
+  - {fileID: 6274768427973686526}
+  - {fileID: 7946381668062239258}
+  - {fileID: 2546736035490330827}
+  - {fileID: 7753578458790986910}
+  - {fileID: 368083782836645816}
   TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
   GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
   BloomCamera: {fileID: 496819865}
-  OuterText: 1
   outerTextSelected: 0
   innerTextSelected: 0
---- !u!1 &1050145994
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1050145995}
-  m_Layer: 0
-  m_Name: Main Knob
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1050145995
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050145994}
-  m_LocalRotation: {x: 0.08715466, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 0.513, z: 87.812}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 830463576}
-  - {fileID: 2047911056}
-  m_Father: {fileID: 6470012615679539472}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!1 &1204853975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1020,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1219895583}
-  - component: {fileID: 1219895584}
   m_Layer: 0
   m_Name: Knob Text
   m_TagString: Untagged
@@ -1069,32 +1048,6 @@ Transform:
   m_Father: {fileID: 767333777}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1219895584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1219895582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed88daa9d565a7b47a33cdc11541a9fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Alphabet:
-  - {fileID: 8737833851598768859}
-  - {fileID: 3372090316865774268}
-  - {fileID: 2360085612627651502}
-  - {fileID: 6651940895153497416}
-  - {fileID: 1491875494786863844}
-  TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
-  GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
-  BloomCamera: {fileID: 496819865}
-  OuterText: 0
-  outerTextSelected: 0
-  innerTextSelected: 0
-  glowSwitch: 0
-  cipherMechanism: {fileID: 187897161}
 --- !u!1 &1354297256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1057,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1354297257}
+  - component: {fileID: 1354297258}
   m_Layer: 0
   m_Name: Side Knob
   m_TagString: Untagged
@@ -1129,6 +1083,37 @@ Transform:
   m_Father: {fileID: 6470012615679539472}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+--- !u!114 &1354297258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354297256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed88daa9d565a7b47a33cdc11541a9fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterAlphabet:
+  - {fileID: 7498246759485506763}
+  - {fileID: 302362888772112858}
+  - {fileID: 3879671910791161283}
+  - {fileID: 1553794178452721129}
+  - {fileID: 8932375555679827738}
+  InnerAlphabet:
+  - {fileID: 8737833851598768859}
+  - {fileID: 3372090316865774268}
+  - {fileID: 2360085612627651502}
+  - {fileID: 6651940895153497416}
+  - {fileID: 1491875494786863844}
+  TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
+  GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
+  BloomCamera: {fileID: 496819865}
+  outerTextSelected: 0
+  innerTextSelected: 0
+  glowSwitch: 0
+  cipherMechanism: {fileID: 187897161}
 --- !u!1 &1435460280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,7 +1208,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1573146832}
-  - component: {fileID: 1573146833}
   m_Layer: 0
   m_Name: Outer Text
   m_TagString: Untagged
@@ -1252,32 +1236,6 @@ Transform:
   m_Father: {fileID: 1354297257}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1573146833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573146831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed88daa9d565a7b47a33cdc11541a9fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Alphabet:
-  - {fileID: 7498246759485506763}
-  - {fileID: 302362888772112858}
-  - {fileID: 3879671910791161283}
-  - {fileID: 1553794178452721129}
-  - {fileID: 8932375555679827738}
-  TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
-  GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
-  BloomCamera: {fileID: 496819865}
-  OuterText: 1
-  outerTextSelected: 0
-  innerTextSelected: 0
-  glowSwitch: 0
-  cipherMechanism: {fileID: 187897161}
 --- !u!1 &1666590885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,8 +1507,7 @@ MonoBehaviour:
   rotationSpeed: 5
   cipherMechanism: {fileID: 187897161}
   switchMech: {fileID: 22110513}
-  OuterText: {fileID: 830463575}
-  InnerText: {fileID: 270782164}
+  MainKnob: {fileID: 1050145994}
 --- !u!4 &39109249347754636
 Transform:
   m_ObjectHideFlags: 0

@@ -6,13 +6,13 @@ using UnityEngine.Rendering.PostProcessing;
 public class SideKnobGlow : MonoBehaviour
 {
     //Variables
-    public List<GameObject> Alphabet; //List of letters GameObjects present on knobs
+    public List<GameObject> OuterAlphabet; //List of letters GameObjects present on knobs
+    public List<GameObject> InnerAlphabet;
     //Material objects to change letter appearance
     public Material TextMaterial;
     public Material GlowMaterial;
     public Camera BloomCamera; //Camera object to access bloom effect settings
-    public bool OuterText; //flag to check which Text this script is being called on
-    private float timer = 2.0f; //period of glow effect 
+    private float timer = 4.0f; //period of glow effect 
     private bool outerGlow = true; //flag to alternate between glowing and regular text
     //flags to check whether a letter has been clicked on and should glow
     public bool outerTextSelected = false;
@@ -27,7 +27,8 @@ public class SideKnobGlow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ResetMaterials();
+        ResetMaterials(OuterAlphabet);
+        ResetMaterials(InnerAlphabet);
 
         var postProcessVol = BloomCamera.GetComponent<PostProcessVolume>();
         if (postProcessVol != null)
@@ -40,20 +41,29 @@ public class SideKnobGlow : MonoBehaviour
     void Update()
     {
         glowSwitch = cipherMechanism.GetRightSwitch();
-        //update timer with passing time
-        timer += Time.deltaTime;
 
         //if 2 seconds have elapsed, toggle which knob is glowing and reset timer
         //timer initialized to 2 so this will be called right away, making outer text glow as soon as it starts
-        if (timer > 2.0f && glowSwitch)
+        if (glowSwitch)
         {
-            ToggleGlow();
-            timer = 0.0f;
+            //update timer with passing time
+            timer += Time.deltaTime;
+            if (timer > 4.0f)
+            {
+                ToggleGlow();
+                timer = 0.0f;
+            }
+        }
+        else
+        {
+            timer = 4.0f;
+            ResetMaterials(OuterAlphabet);
+            ResetMaterials(InnerAlphabet);
         }
     }
 
     //Function to reset the material of all letters to the regular text material
-    void ResetMaterials()
+    void ResetMaterials(List<GameObject> Alphabet)
     {
         foreach (GameObject letter in Alphabet)
         {
@@ -68,57 +78,41 @@ public class SideKnobGlow : MonoBehaviour
     */
     void ToggleGlow()
     {
-        foreach (GameObject letter in Alphabet)
-        {
-            Renderer letterRenderer = letter.GetComponent<Renderer>();
 
-            /*
-            If the outerGlow flag is set, it means the outer knob should glow. It checks the OuterText flag (which is only ever set to true for the outer knob),
-            and if true, then it also checks that no letter on the outer text has been clicked (through the outerTextSelected flag), and only then 
-            will it change the material of all the letters to the glowing material and launch the Bloom Effect coroutine to gradually increase
-            and decrease the glow intensity, to create a pulsating effect. If the OuterText flag is not set, then this is being called by the inner text, and in that
-            case just set material of all letters to the regular text material, as long as no letters have been clicked yet.
-            */
-            if (outerGlow)
+        /*
+        If the outerGlow flag is set, it means the outer knob should glow. It checks the OuterText flag (which is only ever set to true for the outer knob),
+        and if true, then it also checks that no letter on the outer text has been clicked (through the outerTextSelected flag), and only then 
+        will it change the material of all the letters to the glowing material and launch the Bloom Effect coroutine to gradually increase
+        and decrease the glow intensity, to create a pulsating effect. If the OuterText flag is not set, then this is being called by the inner text, and in that
+        case just set material of all letters to the regular text material, as long as no letters have been clicked yet.
+        */
+        if (outerGlow)
+        {
+            if (!outerTextSelected)
             {
-                if (OuterText)
-                {
-                    if (!outerTextSelected)
-                    {
-                        letterRenderer.material = GlowMaterial;
-                        StartBloomEffect();
-                    }
-                }
-                else
-                {
-                    if (!innerTextSelected)
-                    {
-                        letterRenderer.material = TextMaterial;
-                    }
-                }
+                GlowLetterList(OuterAlphabet, outerGlow);
             }
-            /*
-            If the outerGlow flag is not set, then it means the inner knob should glow. The exact same behaviour as above repeats, 
-            but in this case, we switch the setting of the glow material and the call of the Bloom Effect coroutine so that the inner knob
-            (the one with the OuterText flag NOT set) can glow if no letters have been clicked yet.
-            */
-            else
+            if (!innerTextSelected)
             {
-                if (OuterText)
-                {
-                    if (!outerTextSelected)
-                    {
-                        letterRenderer.material = TextMaterial;
-                    }
-                }
-                else
-                {
-                    if (!innerTextSelected)
-                    {
-                        letterRenderer.material = GlowMaterial;
-                        StartBloomEffect();
-                    }
-                }
+                GlowLetterList(InnerAlphabet, !outerGlow);
+            }
+
+        }
+        /*
+        If the outerGlow flag is not set, then it means the inner knob should glow. The exact same behaviour as above repeats, 
+        but in this case, we switch the setting of the glow material and the call of the Bloom Effect coroutine so that the inner knob
+        (the one with the OuterText flag NOT set) can glow if no letters have been clicked yet.
+        */
+        else
+        {
+            if (!outerTextSelected)
+            {
+                GlowLetterList(OuterAlphabet, outerGlow);
+            }
+
+            if (!innerTextSelected)
+            {
+                GlowLetterList(InnerAlphabet, !outerGlow);
             }
         }
         outerGlow = !outerGlow;
@@ -126,9 +120,10 @@ public class SideKnobGlow : MonoBehaviour
 
 
     //Function that is accessed by MainKnobRotation script to make a single letter glow when clicked
-    public void GlowLetter(GameObject letter)
+    public void GlowLetter(GameObject letter, bool outerText)
     {
-        ResetMaterials();
+        ResetMaterials(OuterAlphabet);
+        ResetMaterials(InnerAlphabet);
         letter.GetComponent<Renderer>().material = GlowMaterial;
     }
 
@@ -139,9 +134,26 @@ public class SideKnobGlow : MonoBehaviour
         if (bloomEffect != null)
         {
             //stop any active coroutines to avoid multiple at same time
-            StopAllCoroutines();
+            // StopAllCoroutines();
             //start coroutine that will alternate intensity from 0 to 2 over a 2 second time frame
-            StartCoroutine(AnimateBloomIntensity(0.0f, 2.0f, 2.0f));
+            StartCoroutine(AnimateBloomIntensity(0.0f, 2.0f, 4.0f));
+        }
+    }
+
+    public void GlowLetterList(List<GameObject> Alphabet, bool flag)
+    {
+        foreach (GameObject letter in Alphabet)
+        {
+            Renderer letterRenderer = letter.GetComponent<Renderer>();
+            if (flag)
+            {
+                letterRenderer.material = GlowMaterial;
+                StartBloomEffect();
+            }
+            else
+            {
+                letterRenderer.material = TextMaterial;
+            }
         }
     }
 
