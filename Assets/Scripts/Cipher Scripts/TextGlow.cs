@@ -12,7 +12,7 @@ public class TextGlow : MonoBehaviour
     public Material GlowMaterial;
     public Camera BloomCamera; //Camera object to access bloom effect settings
     public bool OuterText; //flag to check which Text this script is being called on
-    private float timer = 2.0f; //period of glow effect 
+    private float timer = 4.0f; //period of glow effect 
     private bool outerGlow = true; //flag to alternate between glowing and regular text
     //flags to check whether a letter has been clicked on and should glow
     public bool outerTextSelected = false;
@@ -38,7 +38,7 @@ public class TextGlow : MonoBehaviour
 
         //if 2 seconds have elapsed, toggle which knob is glowing and reset timer
         //timer initialized to 2 so this will be called right away, making outer text glow as soon as it starts
-        if (timer > 2.0f)
+        if (timer > 4.0f)
         {
             ToggleGlow();
             timer = 0.0f;
@@ -134,13 +134,14 @@ public class TextGlow : MonoBehaviour
             //stop any active coroutines to avoid multiple at same time
             StopAllCoroutines();
             //start coroutine that will alternate intensity from 0 to 2 over a 2 second time frame
-            StartCoroutine(AnimateBloomIntensity(0.0f, 2.0f, 2.0f));
+            StartCoroutine(AnimateBloomIntensity(0.0f, 2.0f, 4.0f));
         }
     }
 
     //Coroutine that changes intensity value of bloom effect dynamically to simulate a pulsating glow animation
     private IEnumerator AnimateBloomIntensity(float startIntensity, float endIntensity, float duration)
     {
+        bloomEffect.intensity.value = startIntensity;
         float currentTime = 0f;
         while (currentTime < duration)
         {
@@ -150,7 +151,7 @@ public class TextGlow : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null; // Wait until next frame
         }
-        bloomEffect.intensity.value = startIntensity; // Reset to start intensity
+       // bloomEffect.intensity.value = startIntensity; // Reset to start intensity
     }
 
 }
