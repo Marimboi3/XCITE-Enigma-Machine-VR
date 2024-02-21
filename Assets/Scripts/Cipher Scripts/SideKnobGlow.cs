@@ -122,8 +122,14 @@ public class SideKnobGlow : MonoBehaviour
     //Function that is accessed by MainKnobRotation script to make a single letter glow when clicked
     public void GlowLetter(GameObject letter, bool outerText)
     {
-        ResetMaterials(OuterAlphabet);
-        ResetMaterials(InnerAlphabet);
+        if (outerText)
+        {
+            ResetMaterials(OuterAlphabet);
+        }
+        else
+        {
+            ResetMaterials(InnerAlphabet);
+        }
         letter.GetComponent<Renderer>().material = GlowMaterial;
     }
 
@@ -134,8 +140,8 @@ public class SideKnobGlow : MonoBehaviour
         if (bloomEffect != null)
         {
             //stop any active coroutines to avoid multiple at same time
-            // StopAllCoroutines();
-            //start coroutine that will alternate intensity from 0 to 2 over a 2 second time frame
+            StopAllCoroutines();
+            //start coroutine that will alternate intensity from 0 to 2 over a 4 second time frame
             StartCoroutine(AnimateBloomIntensity(0.0f, 2.0f, 4.0f));
         }
     }

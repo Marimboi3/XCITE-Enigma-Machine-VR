@@ -789,6 +789,7 @@ MonoBehaviour:
   rotationSpeed: 5
   cipherMechanism: {fileID: 187897161}
   switchMech: {fileID: 1754539064}
+  SideKnob: {fileID: 1354297256}
 --- !u!1 &830463575
 GameObject:
   m_ObjectHideFlags: 0
