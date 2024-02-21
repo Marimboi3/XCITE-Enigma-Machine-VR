@@ -6,8 +6,11 @@ using UnityEngine.Rendering.PostProcessing;
 public class TextGlow : MonoBehaviour
 {
     //Variables
-    public List<GameObject> OuterAlphabet; //List of letters GameObjects present on knobs
-    public List<GameObject> InnerAlphabet;
+    public List<GameObject> OuterAlphabetMain; //List of letters GameObjects present on knobs
+    public List<GameObject> InnerAlphabetMain;
+
+    public List<GameObject> OuterAlphabetSide; //List of letters GameObjects present on knobs
+    public List<GameObject> InnerAlphabetSide;
     //Material objects to change letter appearance
     public Material TextMaterial;
     public Material GlowMaterial;
@@ -15,15 +18,23 @@ public class TextGlow : MonoBehaviour
     private float timer = 4.0f; //period of glow effect 
     private bool outerGlow = true; //flag to alternate between glowing and regular text
     //flags to check whether a letter has been clicked on and should glow
-    public bool outerTextSelected = false;
-    public bool innerTextSelected = false;
+    public bool outerTextSelectedMain = false;
+    public bool innerTextSelectedMain = false;
+
+    public bool outerTextSelectedSide = false;
+    public bool innerTextSelectedSide = false;
+
+
+    public bool glowSwitch = false;
     //Bloom object to hold reference to bloom effect being used on the camera
     private Bloom bloomEffect;
 
     void Start()
     {
-        ResetMaterials(OuterAlphabet);
-        ResetMaterials(InnerAlphabet);
+        ResetMaterials(OuterAlphabetMain);
+        ResetMaterials(InnerAlphabetMain);
+        ResetMaterials(OuterAlphabetSide);
+        ResetMaterials(InnerAlphabetSide);
 
         var postProcessVol = BloomCamera.GetComponent<PostProcessVolume>();
         if (postProcessVol != null)
@@ -56,21 +67,17 @@ public class TextGlow : MonoBehaviour
 
         /*
         If the outerGlow flag is set, it means the outer knob should glow. It checks the OuterText flag (which is only ever set to true for the outer knob),
-        and if true, then it also checks that no letter on the outer text has been clicked (through the outerTextSelected flag), and only then 
+        and if true, then it also checks that no letter on the outer text has been clicked (through the outerTextSelectedMain flag), and only then 
         will it change the material of all the letters to the glowing material and launch the Bloom Effect coroutine to gradually increase
         and decrease the glow intensity, to create a pulsating effect. If the OuterText flag is not set, then this is being called by the inner text, and in that
         case just set material of all letters to the regular text material, as long as no letters have been clicked yet.
         */
         if (outerGlow)
         {
-            if (!outerTextSelected)
-            {
-                GlowLetterList(OuterAlphabet, outerGlow);
-            }
-            if (!innerTextSelected)
-            {
-                GlowLetterList(InnerAlphabet, !outerGlow);
-            }
+            ResetMaterials(InnerAlphabetMain);
+            GlowLetterList(OuterAlphabetMain, outerTextSelectedMain);
+            GlowLetterList(OuterAlphabetSide, outerTextSelectedSide);
+            StartBloomEffect();
 
         }
         /*
@@ -80,15 +87,10 @@ public class TextGlow : MonoBehaviour
         */
         else
         {
-            if (!outerTextSelected)
-            {
-                GlowLetterList(OuterAlphabet, outerGlow);
-            }
-
-            if (!innerTextSelected)
-            {
-                GlowLetterList(InnerAlphabet, !outerGlow);
-            }
+            ResetMaterials(OuterAlphabetMain);
+            GlowLetterList(InnerAlphabetMain, outerTextSelectedMain);
+            GlowLetterList(OuterAlphabetSide, outerTextSelectedSide);
+            StartBloomEffect();
         }
         outerGlow = !outerGlow;
     }
@@ -107,11 +109,11 @@ public class TextGlow : MonoBehaviour
     {
         if (outerText)
         {
-            ResetMaterials(OuterAlphabet);
+            ResetMaterials(OuterAlphabetMain);
         }
         else
         {
-            ResetMaterials(InnerAlphabet);
+            ResetMaterials(InnerAlphabetMain);
         }
         letter.GetComponent<Renderer>().material = GlowMaterial;
     }
@@ -129,24 +131,16 @@ public class TextGlow : MonoBehaviour
         }
     }
 
-    public void GlowLetterList(List<GameObject> Alphabet, bool flag)
+    public void GlowLetterList(List<GameObject> Alphabet, bool letterChosen)
     {
-        if (flag)
+        if (!letterChosen)
         {
             foreach (GameObject letter in Alphabet)
             {
                 Renderer letterRenderer = letter.GetComponent<Renderer>();
                 letterRenderer.material = GlowMaterial;
             }
-            StartBloomEffect();
-        }
-        else
-        {
-            foreach (GameObject letter in Alphabet)
-            {
-                Renderer letterRenderer = letter.GetComponent<Renderer>();
-                letterRenderer.material = TextMaterial;
-            }
+           // StartBloomEffect();
         }
     }
 
