@@ -20,6 +20,9 @@ public class Side_Knob_Rotation : MonoBehaviour
     private int knobOffset = 0;
     private float currentRotation = 0;
 
+    // Variables for making text glow
+    public GameObject SideKnob;
+
     // Update is called once per frame
     private void Update()
     {
@@ -35,8 +38,13 @@ public class Side_Knob_Rotation : MonoBehaviour
                 GameObject clickedObject = hit.collider.gameObject;
 
                 // Check if the clicked object is a side knob
-                if (clickedObject.CompareTag("SideKnob"))
+                if (clickedObject.CompareTag("SideKnob") && rightSwitch)
                 {
+                    //set flag
+                    SideKnob.GetComponent<SideKnobGlow>().innerTextSelected = true;
+                    //glow individual letter
+                    SideKnob.GetComponent<SideKnobGlow>().GlowLetter(clickedObject, false);
+
                     knobSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
                     //Debug.Log("Knob Position Chosen: " + (int)knobSelectedLetter);
 
@@ -59,8 +67,13 @@ public class Side_Knob_Rotation : MonoBehaviour
                     //Debug.Log("Letter Chosen ASCII: " + knobASCII);
                 }
                 // Check if the clicked object is a side base
-                else if (clickedObject.CompareTag("SideBase"))
+                else if (clickedObject.CompareTag("SideBase") && rightSwitch)
                 {
+                    //set flag
+                    SideKnob.GetComponent<SideKnobGlow>().outerTextSelected = true;
+                    //glow individual letter
+                    SideKnob.GetComponent<SideKnobGlow>().GlowLetter(clickedObject, true);
+
                     baseSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
                     //Debug.Log("Base Position Selected: " + (int)baseSelectedLetter);
 
@@ -91,7 +104,7 @@ public class Side_Knob_Rotation : MonoBehaviour
         }
 
         // Check conditions for knob rotation
-        if (!isRotating && knobSelectedLetter != '\0' && baseSelectedLetter != '\0')
+        if (!isRotating && knobSelectedLetter != '\0' && baseSelectedLetter != '\0' && rightSwitch)
         {
             // Start rotating the knob to the selected letters
             isRotating = true;

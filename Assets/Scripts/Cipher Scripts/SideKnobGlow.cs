@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class TextGlow : MonoBehaviour
+public class SideKnobGlow : MonoBehaviour
 {
     //Variables
     public List<GameObject> OuterAlphabet; //List of letters GameObjects present on knobs
@@ -19,7 +19,12 @@ public class TextGlow : MonoBehaviour
     public bool innerTextSelected = false;
     //Bloom object to hold reference to bloom effect being used on the camera
     private Bloom bloomEffect;
+    //variable to decide when to start glowing
+    public bool glowSwitch = false;
 
+    public Cipher_Mechanism cipherMechanism;
+
+    // Start is called before the first frame update
     void Start()
     {
         ResetMaterials(OuterAlphabet);
@@ -32,25 +37,45 @@ public class TextGlow : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
     void Update()
     {
-        //update timer with passing time
-        timer += Time.deltaTime;
+        glowSwitch = cipherMechanism.GetRightSwitch();
 
-        //if 4 seconds have elapsed, toggle which knob is glowing and reset timer
-        //timer initialized to 4 so this will be called right away, making outer text glow as soon as it starts
-        if (timer > 4.0f)
+        //if 2 seconds have elapsed, toggle which knob is glowing and reset timer
+        //timer initialized to 2 so this will be called right away, making outer text glow as soon as it starts
+        if (glowSwitch)
         {
-            ToggleGlow();
-            timer = 0.0f;
+            //update timer with passing time
+            timer += Time.deltaTime;
+            if (timer > 4.0f)
+            {
+                ToggleGlow();
+                timer = 0.0f;
+            }
+        }
+        else
+        {
+            timer = 4.0f;
+            ResetMaterials(OuterAlphabet);
+            ResetMaterials(InnerAlphabet);
+        }
+    }
+
+    //Function to reset the material of all letters to the regular text material
+    void ResetMaterials(List<GameObject> Alphabet)
+    {
+        foreach (GameObject letter in Alphabet)
+        {
+            letter.GetComponent<Renderer>().material = TextMaterial;
         }
     }
 
     /*
-  Void function to toggle the glow effect between the outer and the inner text of the knobs. 
-  This function is called every 4 seconds, and it alternates the glowing by checking the outerGlow flag, which is flipped 
-  each time function is called.  
-   */
+   Void function to toggle the glow effect between the outer and the inner text of the knobs. 
+   This function is called every 2 seconds, and it alternates the glowing by checking the outerGlow flag, which is flipped 
+   each time function is called.  
+    */
     void ToggleGlow()
     {
 
@@ -93,14 +118,6 @@ public class TextGlow : MonoBehaviour
         outerGlow = !outerGlow;
     }
 
-    //Function to reset the material of all letters to the regular text material
-    void ResetMaterials(List<GameObject> Alphabet)
-    {
-        foreach (GameObject letter in Alphabet)
-        {
-            letter.GetComponent<Renderer>().material = TextMaterial;
-        }
-    }
 
     //Function that is accessed by MainKnobRotation script to make a single letter glow when clicked
     public void GlowLetter(GameObject letter, bool outerText)
@@ -124,7 +141,7 @@ public class TextGlow : MonoBehaviour
         {
             //stop any active coroutines to avoid multiple at same time
             StopAllCoroutines();
-            //start coroutine that will alternate intensity from 0 to 2 over a 2 second time frame
+            //start coroutine that will alternate intensity from 0 to 2 over a 4 second time frame
             StartCoroutine(AnimateBloomIntensity(0.0f, 2.0f, 4.0f));
         }
     }
@@ -149,7 +166,6 @@ public class TextGlow : MonoBehaviour
     //Coroutine that changes intensity value of bloom effect dynamically to simulate a pulsating glow animation
     private IEnumerator AnimateBloomIntensity(float startIntensity, float endIntensity, float duration)
     {
-        bloomEffect.intensity.value = startIntensity;
         float currentTime = 0f;
         while (currentTime < duration)
         {
@@ -159,7 +175,6 @@ public class TextGlow : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null; // Wait until next frame
         }
-       // bloomEffect.intensity.value = startIntensity; // Reset to start intensity
+        bloomEffect.intensity.value = startIntensity; // Reset to start intensity
     }
-
 }
