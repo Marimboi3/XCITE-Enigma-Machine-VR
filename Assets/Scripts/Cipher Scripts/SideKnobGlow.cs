@@ -148,16 +148,20 @@ public class SideKnobGlow : MonoBehaviour
 
     public void GlowLetterList(List<GameObject> Alphabet, bool flag)
     {
-        foreach (GameObject letter in Alphabet)
+        if (flag)
         {
-            Renderer letterRenderer = letter.GetComponent<Renderer>();
-            if (flag)
+            foreach (GameObject letter in Alphabet)
             {
+                Renderer letterRenderer = letter.GetComponent<Renderer>();
                 letterRenderer.material = GlowMaterial;
-                StartBloomEffect();
             }
-            else
+            StartBloomEffect();
+        }
+        else
+        {
+            foreach (GameObject letter in Alphabet)
             {
+                Renderer letterRenderer = letter.GetComponent<Renderer>();
                 letterRenderer.material = TextMaterial;
             }
         }
