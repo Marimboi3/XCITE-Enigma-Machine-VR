@@ -421,7 +421,7 @@ MonoBehaviour:
   outerTextSelectedSide: 0
   innerTextSelectedSide: 0
   glowSwitch: 0
-  cipherMechanism: {fileID: 0}
+  cipherMechanism: {fileID: 187897161}
 --- !u!1 &270782164
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ public class Main_Knob_Rotation : MonoBehaviour
                     //set flag
                     GameManager.GetComponent<TextGlow>().innerTextSelectedMain = true;
                     //glow individual letter
-                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, false);
+                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, false, true);
 
                     // Retrieve the selected letter from the knob
                     knobSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
@@ -74,7 +74,7 @@ public class Main_Knob_Rotation : MonoBehaviour
                     //set flag
                     GameManager.GetComponent<TextGlow>().outerTextSelectedMain = true;
                     //glow individual letter
-                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, true);
+                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, true, true);
 
                     // Retrieve the selected letter from the base
                     baseSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;

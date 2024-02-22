@@ -76,13 +76,19 @@ public class TextGlow : MonoBehaviour
         */
         if (outerGlow)
         {
-            ResetMaterials(InnerAlphabetMain);
-            GlowLetterList(OuterAlphabetMain, outerTextSelectedMain);
+            if (!outerTextSelectedMain)
+            {
+                ResetMaterials(InnerAlphabetMain);
+                GlowLetterList(OuterAlphabetMain, outerTextSelectedMain);
+            }
 
             if (glowSwitch)
             {
-                ResetMaterials(InnerAlphabetSide);
-                GlowLetterList(OuterAlphabetSide, outerTextSelectedSide);
+                if (!outerTextSelectedSide)
+                {
+                    ResetMaterials(InnerAlphabetSide);
+                    GlowLetterList(OuterAlphabetSide, outerTextSelectedSide);
+                }
             }
             StartBloomEffect();
 
@@ -94,12 +100,19 @@ public class TextGlow : MonoBehaviour
         */
         else
         {
-            ResetMaterials(OuterAlphabetMain);
-            GlowLetterList(InnerAlphabetMain, innerTextSelectedMain);
+            if (!innerTextSelectedMain)
+            {
+                ResetMaterials(OuterAlphabetMain);
+                GlowLetterList(InnerAlphabetMain, innerTextSelectedMain);
+            }
+
             if (glowSwitch)
             {
-                ResetMaterials(OuterAlphabetSide);
-                GlowLetterList(InnerAlphabetSide, innerTextSelectedSide);
+                if (!innerTextSelectedSide)
+                {
+                    ResetMaterials(OuterAlphabetSide);
+                    GlowLetterList(InnerAlphabetSide, innerTextSelectedSide);
+                }
             }
             StartBloomEffect();
         }
@@ -116,15 +129,23 @@ public class TextGlow : MonoBehaviour
     }
 
     //Function that is accessed by MainKnobRotation script to make a single letter glow when clicked
-    public void GlowLetter(GameObject letter, bool outerText)
+    public void GlowLetter(GameObject letter, bool outerText, bool main)
     {
-        if (outerText)
+        if (outerText && main)
         {
             ResetMaterials(OuterAlphabetMain);
         }
-        else
+        else if(outerText && !main)
+        {
+            ResetMaterials(OuterAlphabetSide);
+        }
+        else if (!outerText && main)
         {
             ResetMaterials(InnerAlphabetMain);
+        }
+        else if (!outerText && !main)
+        {
+            ResetMaterials(InnerAlphabetSide);
         }
         letter.GetComponent<Renderer>().material = GlowMaterial;
     }

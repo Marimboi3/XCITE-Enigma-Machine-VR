@@ -43,7 +43,7 @@ public class Side_Knob_Rotation : MonoBehaviour
                     //set flag
                     GameManager.GetComponent<TextGlow>().innerTextSelectedSide = true;
                     //glow individual letter
-                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, false);
+                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, false, false);
 
                     knobSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
                     //Debug.Log("Knob Position Chosen: " + (int)knobSelectedLetter);
@@ -72,7 +72,7 @@ public class Side_Knob_Rotation : MonoBehaviour
                     //set flag
                     GameManager.GetComponent<TextGlow>().outerTextSelectedSide = true;
                     //glow individual letter
-                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, true);
+                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, true, false);
 
                     baseSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
                     //Debug.Log("Base Position Selected: " + (int)baseSelectedLetter);
