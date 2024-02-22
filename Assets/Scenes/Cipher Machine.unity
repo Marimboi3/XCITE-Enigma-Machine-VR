@@ -297,6 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 187897162}
   - component: {fileID: 187897161}
+  - component: {fileID: 187897163}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -334,6 +335,93 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &187897163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187897160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e855f6787ae72a40ad309ef903a7377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OuterAlphabetMain:
+  - {fileID: 8881362698374743101}
+  - {fileID: 2152496372575880646}
+  - {fileID: 8874859913476069148}
+  - {fileID: 930487498634172723}
+  - {fileID: 4543068533475411245}
+  - {fileID: 3491356157954700396}
+  - {fileID: 9053045410459976211}
+  - {fileID: 7417847313078518140}
+  - {fileID: 8160744034326131036}
+  - {fileID: 1229082893121183993}
+  - {fileID: 1951128489117648132}
+  - {fileID: 315803555052682394}
+  - {fileID: 6048885926932208236}
+  - {fileID: 8681822664508687465}
+  - {fileID: 5921468234234916863}
+  - {fileID: 4885101139323435771}
+  - {fileID: 8100824021254808132}
+  - {fileID: 4472912407472257016}
+  - {fileID: 2969385907769032925}
+  - {fileID: 4986994884460224111}
+  - {fileID: 4055616629111542048}
+  - {fileID: 1482373562735034469}
+  - {fileID: 4833955355709234250}
+  - {fileID: 5899001433099075702}
+  - {fileID: 2669015466061981590}
+  - {fileID: 7921405717345363644}
+  InnerAlphabetMain:
+  - {fileID: 463500856168103031}
+  - {fileID: 4203888988204621135}
+  - {fileID: 6578147309506639257}
+  - {fileID: 5144359457995254832}
+  - {fileID: 2295050415288447637}
+  - {fileID: 2865512247060864018}
+  - {fileID: 390381865665729289}
+  - {fileID: 3276808764662355697}
+  - {fileID: 7526186225558317897}
+  - {fileID: 7698591337233818437}
+  - {fileID: 2613492328550177383}
+  - {fileID: 7234111958871501607}
+  - {fileID: 7993542956192111709}
+  - {fileID: 1669158917145263002}
+  - {fileID: 2136610135812911032}
+  - {fileID: 3362467631919370874}
+  - {fileID: 8534618338068525838}
+  - {fileID: 7229720701906849066}
+  - {fileID: 4817735957189350062}
+  - {fileID: 4260305984024587442}
+  - {fileID: 3565287637582312416}
+  - {fileID: 6274768427973686526}
+  - {fileID: 7946381668062239258}
+  - {fileID: 2546736035490330827}
+  - {fileID: 7753578458790986910}
+  - {fileID: 368083782836645816}
+  OuterAlphabetSide:
+  - {fileID: 7498246759485506763}
+  - {fileID: 302362888772112858}
+  - {fileID: 3879671910791161283}
+  - {fileID: 1553794178452721129}
+  - {fileID: 8932375555679827738}
+  InnerAlphabetSide:
+  - {fileID: 8737833851598768859}
+  - {fileID: 3372090316865774268}
+  - {fileID: 2360085612627651502}
+  - {fileID: 6651940895153497416}
+  - {fileID: 1491875494786863844}
+  TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
+  GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
+  BloomCamera: {fileID: 496819865}
+  outerTextSelectedMain: 0
+  innerTextSelectedMain: 0
+  outerTextSelectedSide: 0
+  innerTextSelectedSide: 0
+  glowSwitch: 0
+  cipherMechanism: {fileID: 0}
 --- !u!1 &270782164
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +877,7 @@ MonoBehaviour:
   rotationSpeed: 5
   cipherMechanism: {fileID: 187897161}
   switchMech: {fileID: 1754539064}
-  SideKnob: {fileID: 1354297256}
+  GameManager: {fileID: 187897160}
 --- !u!1 &830463575
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +970,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1050145995}
-  - component: {fileID: 1050145996}
   m_Layer: 0
   m_Name: Main Knob
   m_TagString: Untagged
@@ -907,77 +994,6 @@ Transform:
   m_Father: {fileID: 6470012615679539472}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
---- !u!114 &1050145996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050145994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e855f6787ae72a40ad309ef903a7377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OuterAlphabet:
-  - {fileID: 8881362698374743101}
-  - {fileID: 2152496372575880646}
-  - {fileID: 8874859913476069148}
-  - {fileID: 930487498634172723}
-  - {fileID: 4543068533475411245}
-  - {fileID: 3491356157954700396}
-  - {fileID: 9053045410459976211}
-  - {fileID: 7417847313078518140}
-  - {fileID: 8160744034326131036}
-  - {fileID: 1229082893121183993}
-  - {fileID: 1951128489117648132}
-  - {fileID: 315803555052682394}
-  - {fileID: 6048885926932208236}
-  - {fileID: 8681822664508687465}
-  - {fileID: 5921468234234916863}
-  - {fileID: 4885101139323435771}
-  - {fileID: 8100824021254808132}
-  - {fileID: 4472912407472257016}
-  - {fileID: 2969385907769032925}
-  - {fileID: 4986994884460224111}
-  - {fileID: 4055616629111542048}
-  - {fileID: 1482373562735034469}
-  - {fileID: 4833955355709234250}
-  - {fileID: 5899001433099075702}
-  - {fileID: 2669015466061981590}
-  - {fileID: 7921405717345363644}
-  InnerAlphabet:
-  - {fileID: 463500856168103031}
-  - {fileID: 4203888988204621135}
-  - {fileID: 6578147309506639257}
-  - {fileID: 5144359457995254832}
-  - {fileID: 2295050415288447637}
-  - {fileID: 2865512247060864018}
-  - {fileID: 390381865665729289}
-  - {fileID: 3276808764662355697}
-  - {fileID: 7526186225558317897}
-  - {fileID: 7698591337233818437}
-  - {fileID: 2613492328550177383}
-  - {fileID: 7234111958871501607}
-  - {fileID: 7993542956192111709}
-  - {fileID: 1669158917145263002}
-  - {fileID: 2136610135812911032}
-  - {fileID: 3362467631919370874}
-  - {fileID: 8534618338068525838}
-  - {fileID: 7229720701906849066}
-  - {fileID: 4817735957189350062}
-  - {fileID: 4260305984024587442}
-  - {fileID: 3565287637582312416}
-  - {fileID: 6274768427973686526}
-  - {fileID: 7946381668062239258}
-  - {fileID: 2546736035490330827}
-  - {fileID: 7753578458790986910}
-  - {fileID: 368083782836645816}
-  TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
-  GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
-  BloomCamera: {fileID: 496819865}
-  outerTextSelected: 0
-  innerTextSelected: 0
 --- !u!1 &1204853975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,7 +1074,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1354297257}
-  - component: {fileID: 1354297258}
   m_Layer: 0
   m_Name: Side Knob
   m_TagString: Untagged
@@ -1084,37 +1099,6 @@ Transform:
   m_Father: {fileID: 6470012615679539472}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
---- !u!114 &1354297258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354297256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed88daa9d565a7b47a33cdc11541a9fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OuterAlphabet:
-  - {fileID: 7498246759485506763}
-  - {fileID: 302362888772112858}
-  - {fileID: 3879671910791161283}
-  - {fileID: 1553794178452721129}
-  - {fileID: 8932375555679827738}
-  InnerAlphabet:
-  - {fileID: 8737833851598768859}
-  - {fileID: 3372090316865774268}
-  - {fileID: 2360085612627651502}
-  - {fileID: 6651940895153497416}
-  - {fileID: 1491875494786863844}
-  TextMaterial: {fileID: 2100000, guid: b4df7c5760b9d77478d3d4243672d307, type: 2}
-  GlowMaterial: {fileID: 2100000, guid: 96fff25d04c801849a6eb217adf9c1c2, type: 2}
-  BloomCamera: {fileID: 496819865}
-  outerTextSelected: 0
-  innerTextSelected: 0
-  glowSwitch: 0
-  cipherMechanism: {fileID: 187897161}
 --- !u!1 &1435460280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,7 +1492,7 @@ MonoBehaviour:
   rotationSpeed: 5
   cipherMechanism: {fileID: 187897161}
   switchMech: {fileID: 22110513}
-  MainKnob: {fileID: 1050145994}
+  GameManager: {fileID: 187897160}
 --- !u!4 &39109249347754636
 Transform:
   m_ObjectHideFlags: 0

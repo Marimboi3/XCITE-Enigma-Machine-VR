@@ -21,7 +21,6 @@ public class SideKnobGlow : MonoBehaviour
     private Bloom bloomEffect;
     //variable to decide when to start glowing
     public bool glowSwitch = false;
-
     public Cipher_Mechanism cipherMechanism;
 
     // Start is called before the first frame update

@@ -24,8 +24,9 @@ public class TextGlow : MonoBehaviour
     public bool outerTextSelectedSide = false;
     public bool innerTextSelectedSide = false;
 
-
+    //variable to decide when to start glowing
     public bool glowSwitch = false;
+    public Cipher_Mechanism cipherMechanism;
     //Bloom object to hold reference to bloom effect being used on the camera
     private Bloom bloomEffect;
 
@@ -45,6 +46,7 @@ public class TextGlow : MonoBehaviour
 
     void Update()
     {
+        glowSwitch = cipherMechanism.GetRightSwitch();
         //update timer with passing time
         timer += Time.deltaTime;
 
@@ -76,7 +78,12 @@ public class TextGlow : MonoBehaviour
         {
             ResetMaterials(InnerAlphabetMain);
             GlowLetterList(OuterAlphabetMain, outerTextSelectedMain);
-            GlowLetterList(OuterAlphabetSide, outerTextSelectedSide);
+
+            if (glowSwitch)
+            {
+                ResetMaterials(InnerAlphabetSide);
+                GlowLetterList(OuterAlphabetSide, outerTextSelectedSide);
+            }
             StartBloomEffect();
 
         }
@@ -88,8 +95,12 @@ public class TextGlow : MonoBehaviour
         else
         {
             ResetMaterials(OuterAlphabetMain);
-            GlowLetterList(InnerAlphabetMain, outerTextSelectedMain);
-            GlowLetterList(OuterAlphabetSide, outerTextSelectedSide);
+            GlowLetterList(InnerAlphabetMain, innerTextSelectedMain);
+            if (glowSwitch)
+            {
+                ResetMaterials(OuterAlphabetSide);
+                GlowLetterList(InnerAlphabetSide, innerTextSelectedSide);
+            }
             StartBloomEffect();
         }
         outerGlow = !outerGlow;
