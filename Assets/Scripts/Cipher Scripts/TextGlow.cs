@@ -79,7 +79,7 @@ public class TextGlow : MonoBehaviour
             if (!outerTextSelectedMain)
             {
                 ResetMaterials(InnerAlphabetMain);
-                GlowLetterList(OuterAlphabetMain, outerTextSelectedMain);
+                GlowLetterList(OuterAlphabetMain);
             }
 
             if (glowSwitch)
@@ -87,7 +87,7 @@ public class TextGlow : MonoBehaviour
                 if (!outerTextSelectedSide)
                 {
                     ResetMaterials(InnerAlphabetSide);
-                    GlowLetterList(OuterAlphabetSide, outerTextSelectedSide);
+                    GlowLetterList(OuterAlphabetSide);
                 }
             }
             StartBloomEffect();
@@ -103,7 +103,7 @@ public class TextGlow : MonoBehaviour
             if (!innerTextSelectedMain)
             {
                 ResetMaterials(OuterAlphabetMain);
-                GlowLetterList(InnerAlphabetMain, innerTextSelectedMain);
+                GlowLetterList(InnerAlphabetMain);
             }
 
             if (glowSwitch)
@@ -111,7 +111,7 @@ public class TextGlow : MonoBehaviour
                 if (!innerTextSelectedSide)
                 {
                     ResetMaterials(OuterAlphabetSide);
-                    GlowLetterList(InnerAlphabetSide, innerTextSelectedSide);
+                    GlowLetterList(InnerAlphabetSide);
                 }
             }
             StartBloomEffect();
@@ -135,7 +135,7 @@ public class TextGlow : MonoBehaviour
         {
             ResetMaterials(OuterAlphabetMain);
         }
-        else if(outerText && !main)
+        else if (outerText && !main)
         {
             ResetMaterials(OuterAlphabetSide);
         }
@@ -163,17 +163,14 @@ public class TextGlow : MonoBehaviour
         }
     }
 
-    public void GlowLetterList(List<GameObject> Alphabet, bool letterChosen)
+    public void GlowLetterList(List<GameObject> Alphabet)
     {
-        if (!letterChosen)
+        foreach (GameObject letter in Alphabet)
         {
-            foreach (GameObject letter in Alphabet)
-            {
-                Renderer letterRenderer = letter.GetComponent<Renderer>();
-                letterRenderer.material = GlowMaterial;
-            }
-           // StartBloomEffect();
+            Renderer letterRenderer = letter.GetComponent<Renderer>();
+            letterRenderer.material = GlowMaterial;
         }
+        // StartBloomEffect();
     }
 
     //Coroutine that changes intensity value of bloom effect dynamically to simulate a pulsating glow animation
@@ -189,7 +186,7 @@ public class TextGlow : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null; // Wait until next frame
         }
-       // bloomEffect.intensity.value = startIntensity; // Reset to start intensity
+        // bloomEffect.intensity.value = startIntensity; // Reset to start intensity
     }
 
 }
