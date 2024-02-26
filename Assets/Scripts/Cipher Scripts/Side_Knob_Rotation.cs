@@ -21,7 +21,7 @@ public class Side_Knob_Rotation : MonoBehaviour
     private float currentRotation = 0;
 
     // Variables for making text glow
-    public GameObject SideKnob;
+    public GameObject GameManager;
 
     // Update is called once per frame
     private void Update()
@@ -41,9 +41,9 @@ public class Side_Knob_Rotation : MonoBehaviour
                 if (clickedObject.CompareTag("SideKnob") && rightSwitch)
                 {
                     //set flag
-                    SideKnob.GetComponent<SideKnobGlow>().innerTextSelected = true;
+                    GameManager.GetComponent<TextGlow>().innerTextSelectedSide = true;
                     //glow individual letter
-                    SideKnob.GetComponent<SideKnobGlow>().GlowLetter(clickedObject, false);
+                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, false, false);
 
                     knobSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
                     //Debug.Log("Knob Position Chosen: " + (int)knobSelectedLetter);
@@ -70,9 +70,9 @@ public class Side_Knob_Rotation : MonoBehaviour
                 else if (clickedObject.CompareTag("SideBase") && rightSwitch)
                 {
                     //set flag
-                    SideKnob.GetComponent<SideKnobGlow>().outerTextSelected = true;
+                    GameManager.GetComponent<TextGlow>().outerTextSelectedSide = true;
                     //glow individual letter
-                    SideKnob.GetComponent<SideKnobGlow>().GlowLetter(clickedObject, true);
+                    GameManager.GetComponent<TextGlow>().GlowLetter(clickedObject, true, false);
 
                     baseSelectedLetter = clickedObject.GetComponent<LetterInfo>().letter;
                     //Debug.Log("Base Position Selected: " + (int)baseSelectedLetter);
