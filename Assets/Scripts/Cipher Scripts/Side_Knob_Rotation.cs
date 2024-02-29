@@ -170,7 +170,7 @@ public class Side_Knob_Rotation : MonoBehaviour
         targetRotation %= 360;
 
         // Convert the target rotation to a quaternion for smooth rotation
-        Quaternion targetQuaternion = Quaternion.Euler(10f, 0, targetRotation);
+        Quaternion targetQuaternion = Quaternion.Euler(0f, 0, targetRotation);
 
         // Start coroutine to gradually rotate the knob
         StartCoroutine(RotateKnob(targetQuaternion));

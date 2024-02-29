@@ -142,7 +142,7 @@ public class Main_Knob_Rotation : MonoBehaviour
         knobOffset = Mathf.RoundToInt(targetRotation / anglePerLetter);
 
         // Create a quaternion for the target rotation
-        Quaternion targetQuaternion = Quaternion.Euler(10f, 0f, targetRotation);
+        Quaternion targetQuaternion = Quaternion.Euler(0f, 0f, targetRotation);
 
         // Start the coroutine to smoothly rotate the knob
         StartCoroutine(RotateKnob(targetQuaternion));
